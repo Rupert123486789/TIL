@@ -129,8 +129,9 @@ start : 폴더/파일을 여는 명령어
 
 ### 8. 꿀 같은 단축키
 
+* Bash에서
+
 ```bash
-* Bash 에서
 위, 아래 방향키 : 과거에 작성한 명령어를 조회(많이 쓰임)
 tab 키 : 자동완성 ex) gumi1 + tab -> gumi1.txt
 ctrl + l : 화면 클리어
@@ -139,10 +140,12 @@ ctrl + insert : 복사
 shift + insert : 붙여넣기
 ctrl + a(<-): 맨 앞으로
 ctrl + e(->): 맨 뒤로
+```
 
 * Code 에서
+
+```bash
 bash 기본설정
 ctrl + ` : 터미널 소환
-
 ```
 

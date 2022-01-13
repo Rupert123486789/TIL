@@ -1,4 +1,4 @@
-# 🌱TIL (Today I Learned)
+# <img src="readme.assets/펭귄.png" alt="펭귄" style="zoom:25%;" />TIL (Today I Learned)
 
 ## git
 
