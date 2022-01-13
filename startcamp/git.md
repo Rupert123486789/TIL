@@ -28,11 +28,11 @@
 
 
 
-## 2.**git의 기본적인 구조**
+## 2.**Git의 기본적인 구조**
 
-![62](git.assets/62.png)
+* Git의 기본적인 구조
 
-
+![62](git.assets/62-16420848412641.png)
 
 * **간편요약**(git staus와 git log로 중간중간 상태확인 꼭 하자! $4000 내기 싫으면!)
 
@@ -44,7 +44,7 @@ git add . -> git commit -m '제목' -> git push
 
 
 
-* 혹시나
+* **처음 설정할 때**
 
 ``` bash
 - 1 project 1 repo -> 여러 project 넣으면 꼬일 수 있음.

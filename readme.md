@@ -4,6 +4,6 @@
 
 1. [CLI 사용하기](./startcamp/CLI.md)
 
-2. [Markdown 사용](./startcamp/markdown.md)
+2. [Markdown 사용](./startcamp/mark.md)
 
-3. [git 기초](./startcamp/git.md)
+3. [Git 기초](./startcamp/git.md)
