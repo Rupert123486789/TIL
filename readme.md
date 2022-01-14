@@ -8,6 +8,6 @@
 
 3. [Git 기초](startcamp/git.md)
 
-4. [Git 마무리](startcamp/git final.md)
+4. [Git 마무리](startcamp/gitfinal.md)
 
    
