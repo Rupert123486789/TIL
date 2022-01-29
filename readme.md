@@ -1,6 +1,6 @@
 ## ![펭귄](readme.assets/펭귄-16421667213851.png)TIL (Today I Learned)
 
-### git
+### Git
 
 1. [CLI사용하기](startcamp/1. CLI.md)
 
@@ -11,3 +11,5 @@
 4. [Git 마무리](startcamp/4. gitfinal.md)
 
    
+
+### Python
