@@ -11,5 +11,5 @@
 
 ### Python
 
-	1. [Python 기초](python/0117_python_basic)
-	1. [제어문](python/0117_control_statement)
+1. [Python 기초](python/0117_python_basic)
+1. [제어문](python/0117_control_statement)
