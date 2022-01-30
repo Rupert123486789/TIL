@@ -11,5 +11,5 @@
 
 ### Python
 
-1. [Python 기초](python/pythonbasic)
-1. [제어문](python/control_statement)
+1. [Python 기초](python/python_basic.md)
+1. [제어문](python/control_statement.md)
