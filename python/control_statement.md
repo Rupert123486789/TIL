@@ -34,8 +34,11 @@
 * **조건 표현식(Conditional Expression)** 
 
   * 조건에 따라 값을 정할 때 활용
+  
   * 삼항 연산자(Ternary Operator)라고 부르기도 함
-
+  
+  * 중첩해서 사용 가능 하지만, 가독성이 좋지 않으므로 적당히만 사용
+  
   * ```python
     true_value if <조건식> else false_value
     ```

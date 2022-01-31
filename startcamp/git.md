@@ -53,6 +53,12 @@ git add . -> git commit -m '제목' -> git push
 	-> 경로가 명확해야 asset에 저장되고 오류가 없음.
 
 - 명령어
+ls -a :list 확인
+cd :command directory, 폴더로 이동, .(현재 폴더), ..(상위 폴더)
+mkdir : make directory, 폴더 만들기
+touch : 파일 만들기
+pwd : pin working directory, 내가 현재 있는 경로
+
 git init
 git commit 창 내에서: i(-insert- 생김) -> 내용 넣기 -> esc(-insert- 사라짐) -> :wq(탈출)
 git remote add remote별명 remote주소
