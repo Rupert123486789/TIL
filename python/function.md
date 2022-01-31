@@ -12,15 +12,18 @@
 
 * **함수의 선언과 호출**
 
-  * def 키워드 활용
+  * 함수 선언할때는 input(매개변수, 갯수와 형태), output(return 되는 값)이 중요!
 
+  * def 키워드 활용
+  
   * ```python
     def <함수이름>(parameter1, parameter2):
         <코드 블럭>
         return value
     ```
-
+  
   * ![image-20220130114315966](function.assets/image-20220130114315966.png)
+  
 
 ---
 
@@ -86,8 +89,8 @@
   * 함수로 생성된 공간은 지역 스코프(local scope)라고 불리고, 그 외 공간은 전역 스코프(global scope)로 불림
     * 전역 스코프(global scope): 코드 어디에서든 참조할 수 있는 공간
     * 지역 스코프(local scope): 함수가 만든 스코프로 함수 내부에서만 참조할 수 있는 공간
-    * 전역 변수(global variable): 전역 스코프에 정의된 변수
-    * 지역 변수(loacl variable): 로컬 스코프에 정의된 변수
+    * 전역 변수(global variable): 전역 스코프에 정의된 변수 / 지역변수와 왠만하면 이름 안겹치게
+    * 지역 변수(loacl variable): 로컬 스코프에 정의된 변수 
 * **변수의 수명주기(liefcycle)**
   * 빌트인 스코프(built-in scope): 파이썬이 실행된 이후부터 영원히 유지
   * 전역 스코프(global scope): 모듈이 호출된 시점 이후 혹은 이름 선언된 이후부터 인터프리터가 끝날 때 까지 유지
@@ -144,10 +147,11 @@
 * **filter(function, iterable)**
   * iterable에서 function의 반환된 결과가 True인 것들만 구성하여 반환함
   * firter object를 반환함
-* **zip(*iterables)**
+* **zip(*iterables)** : 전치행렬 만들때도 활용, 인덱스끼리 묶어줌
+  
   * 복수의 iterable 객체를 모아(zip())줌
   * 결과는 튜플의 모음으로 구성된 zip object를 반환함
-
+  
 * **lambda 함수**
 
   * 표현식을 계산한 결과 값을 반환하는 함수로, 이름 없는 함수여서 익명함수라고도 불림
@@ -163,3 +167,20 @@
     lambda b, h: 0.5 * b * h
     		파라미터 정의 : return되는 값
     ```
+
+
+
+---
+
+
+
+### 7. 모듈(module)
+
+* **모듈**
+  * import module: module 파일 전체를 불러옴
+  * from module: module 파일에서 일부를 가져옴
+  * from module import * : module 파일 안의 내부 전체를 가져옴
+* pip(없어서 사옴) / 모듈(서랍에서 꺼냄, import, from) / 내장함수(책상 위에서 자주 사용)
+* pip list: 정보 확인(책상 서랍에 있는 목록 확인), 참고 목록
+* pip freeze: 사러갈때 참고할 구매 목록 리스트, requirements.txt(통상적으로 쓰이는 이름)
+* venv: vertual environment
