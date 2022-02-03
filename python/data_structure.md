@@ -61,7 +61,7 @@
     * 💥.append(x) : **✨리스트**에 값을 추가 할 수 있음, a[len(a):] = [x]와 동일
     * .extend(iterable) : **✨리스트**에 iterable(list, range, tuple, string) 값을 붙일 수 가 있음, a[len(a):] = iterable 와 동일
     * .insert(i, x) : 정해진 위치 i에 값을 추가함, 음수도 가능
-    * .remove(x) : 리스트에서 ✨**값**이 x인 첫번재 항목을 삭제함, 항목이 없으면 ValueError
+    * .remove(x) : 리스트에서 ✨**값**이 x인 첫번째 항목을 삭제함, 항목이 없으면 ValueError
     * .pop([i]) : 정해진 위치 i에 있는 값(✨**인덱스**)을 삭제하며, 그 항목을 반환함, i가 지정되지 않으면 마지막 항목을 삭제하고 되돌려줌
     * .clear() : 리스트의 모든 항목을 삭제함, []도 같음(새로운 통), 편한것으로 사용
     

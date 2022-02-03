@@ -94,11 +94,11 @@
 * **변수의 수명주기(liefcycle)**
   * 빌트인 스코프(built-in scope): 파이썬이 실행된 이후부터 영원히 유지
   * 전역 스코프(global scope): 모듈이 호출된 시점 이후 혹은 이름 선언된 이후부터 인터프리터가 끝날 때 까지 유지
-  * 지역(함수) 스코프(local scope): 함수가 호출될 때 성성되고, 함수가 종료될 때까지 유지(함수 내에서 처리되지 않는 예외를 일으킬 때 삭제)
+  * 지역(함수) 스코프(local scope): 함수가 호출될 때 생성되고, 함수가 종료될 때까지 유지(함수 내에서 처리되지 않는 예외를 일으킬 때 삭제)
 
-* **이름 검색(resolution) 규칙**
+* 💥**이름 검색(resolution) 규칙**
   * LEGB Rule
-    * Locla scope: 함수
+    * Local scope: 함수
     * Enclosed scope: 특정 함수의 상위 함수
     * Global scope: 함수 밖의 변수 혹은 import된 모듈
     * Built-in scope: 파이썬 안에 내장되어 있는 함수 또는 속성

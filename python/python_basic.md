@@ -92,6 +92,8 @@
 
 * **자료형 분류** 
 
+* ![image-20220203201710429](python_basic.assets/image-20220203201710429.png)
+
   * 불린형 (Boolean Type) or 부울형
   * 수치형 (Numeric Type)
     * int (정수, integer)
