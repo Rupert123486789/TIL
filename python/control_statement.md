@@ -137,7 +137,7 @@
     * 반복문을 종료
     * for 나 while문을 빠져나감
   * continue
-    * continue 이후의 코드를 수행하지 않고, 다음 요수부터 계속(continue)하여 반복을 수행함
+    * continue 이후의 코드를 수행하지 않고, 다음 요소부터 계속(continue)하여 반복을 수행함
 
   * pass
     * 아무것도 하지 않음, 자리 채우는 용도
