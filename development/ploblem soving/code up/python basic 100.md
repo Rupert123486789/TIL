@@ -60,7 +60,7 @@ n = int(input())
 print(n)
 ```
 
-### 6001
+### 6011
 
 ```python
 
