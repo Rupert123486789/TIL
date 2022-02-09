@@ -1,14 +1,16 @@
 ## ![펭귄](array_1.assets/펭귄.png)
 
-* **알고리즘**
+<br>
 
+* **알고리즘**
   * 알고리즘 문제를 풀때는 필기를 해라(숙달되기까지 A4용지 1 묶음은 써야한다)
 
   * 공부 순서 : 언어자체 → 컴퓨터 구조→ 자료 구조 → 알고리즘
 
   * 이산수학
 
-    
+
+<br>
 
 
 * **정렬**
@@ -20,7 +22,7 @@
   * ![image-20220212121753584](tip.assets/image-20220212121753584.png)
   * 버블 정렬과 선택정렬은 기억하자 / 서로의 차이점을 설명할 수 있는가? (그림 설명, 코드 구현)
 
-
+<br>
 
 
 * **문제 풀이**
@@ -46,7 +48,7 @@
   
     
 
-
+<br>
 
 * **파이참**
   * Ctrl + d : 복사(파이참)
@@ -61,12 +63,13 @@
     * 💥컨디션 넣고 그 부분으로 갈수 있음
   * consolas 폰트 : 시인성 있는 폰트
 
-  
-  
+
+<br>
+
 * **사이트**
 
   * https://visualgo.net/en
   * http://whocouldthat.be/visualizing-string-matching/
   * Queue : https://docs.python.org/ko/3.7/library/queue.html 
-  
+
   
