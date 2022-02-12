@@ -23,8 +23,8 @@
 
 * **Float**
 
-  * 박스를 왼쪽혹은 오른쪽으로 이동시켜 텍스트를 포함 인라인 요소들이 주변을 wrapping 하도록 함(block 주변을 감쌈).
-  * 요소가 Normal flow를 벗어나도록 함.(Positioning- absolute: static이 아닌 부모 / fixed : 브라우저(viewpoint))
+  * 박스를 왼쪽혹은 오른쪽으로 이동시켜 텍스트를 포함 인라인 요소들이 주변을 wrapping 하도록 함 (block 주변을 감쌈).
+  * 요소가 Normal flow를 벗어나도록 함.(Positioning- absolute: static이 아닌 부모 / fixed : 브라우저 (viewpoint))
   * ![image-20220212151924158](css_layout(web2).assets/image-20220212151924158.png)
   * none : 기본값
   * left : 요소를 왼쪽으로 띄움
