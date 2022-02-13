@@ -48,6 +48,8 @@
   * ✨flexbox froggy : flexbox 연습 사이트
   * d2 flex
   * flukeout
+  * 마이 리얼트립 최적화
+  * animate.css
 
 
 
