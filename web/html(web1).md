@@ -166,7 +166,7 @@
 
   * ![image-20220206231753629](html.assets/image-20220206231753629.png)
 * 💥**form**(Django에서 굉장히 자주 사용)
-  * `<form>은 정보(데이터)를 서버에 제출하기 위한 영역
+  * `<form>`은 정보(데이터)를 서버에 제출하기 위한 영역
   * `<form>` 기본 속성
     * 💥action : form을 처리할 서버의 URL
     * method : form을 제출할 때 사용할 HTTP 메서드 (GEF 혹은 POST)
