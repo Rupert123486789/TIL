@@ -65,7 +65,7 @@
       * data-bs-toggle="modal"
       * data-bs-target="# ~~~"
       * id="~~~"
-        * target과 id 일치 / # : 아이디 선택자 / toggle 바꾸지 X
+        * target과 id 일치 / # : 아이디 선택자 / toggle은 바꾸지 X
         * card 안으로 modal 넣으면 안됨(body 태그 안에 넣기)
         * HTML top level에 넣기 : 다른 요소에 영향을 안 받기 위해서
     * flex glow 설정
