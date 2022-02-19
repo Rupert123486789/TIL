@@ -58,9 +58,11 @@
     * 💥step into my code
     * step out : 현재 메서드 바로 다음 순서로 감
     * run to cursor : 해당 커서까지 이동
+    * 💥컨디션 넣고 그 부분으로 갈수 있음
+  * consolas 폰트 : 시인성 있는 폰트
 
   
-
+  
 * **사이트**
 
   * https://visualgo.net/en
