@@ -14,14 +14,11 @@
 * **정렬**
 
   * 💥정렬들의 차이를 숙지! (그림→ 수도코드 → 코드 구현) / hungarian bubble sort
-
   * 정렬을 할 때는 주어진 index 범위 파악과 2개씩 비교할 기준 설정이 중요
-
-  * 정렬에 대한 개념을 서로에게 설명해보기
-
+    * 정렬에 대한 개념을 서로에게 설명해보기
   * 💥stable sort 하기 위해서 뒤에서부터 정렬 시킴(뒤에서부터 인덱스를 줄임)
-
   * ![image-20220212121753584](tip.assets/image-20220212121753584.png)
+  * 버블 정렬과 선택정렬은 기억하자 / 서로의 차이점을 설명할 수 있는가? (그림 설명, 코드 구현)
 
 
 
@@ -32,7 +29,13 @@
 
   * 갯수를 모를 때 하나씩 없애는 방법![image-20220212121157890](tip.assets/image-20220212121157890.png)
 
-  * img 49 설명 : index 값을 9까 공유하려고, 12까지 리스트를 만듬. 그렇지 않으면 if문 한개 더 필요.
+  * img 49 설명 : index 값을 9까지 공유하려고, 12까지 리스트를 만듬. 그렇지 않으면 if문 한개 더 필요.
+
+  * string method join 사용
+
+    * ![image-20220219163241227](tip.assets/image-20220219163241227.png)
+
+    
 
 
 
@@ -46,3 +49,12 @@
     * 💥step into my code
     * step out : 현재 메서드 바로 다음 순서로 감
     * run to cursor : 해당 커서까지 이동
+
+  
+
+* **사이트**
+
+  * https://visualgo.net/en
+  * http://whocouldthat.be/visualizing-string-matching/
+
+  
