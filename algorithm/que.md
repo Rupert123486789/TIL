@@ -37,4 +37,4 @@
 
 ### 4. 분할 정복
 
-que que
+que que que que
