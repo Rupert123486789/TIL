@@ -48,3 +48,7 @@
 
 ### 7. Quick sort
 
+![image-20220301232620748](sort.assets/image-20220301232620748.png)
+
+![image-20220301232632141](sort.assets/image-20220301232632141.png)
+
