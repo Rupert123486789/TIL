@@ -123,7 +123,7 @@
 
   * 딕셔너리도 comprehension을 활용할 수 있음
 
-  * `iterable`에서 `dict`를 생성할 수 있습니다.
+  * `iterable`에서 `dict`를 생성할 수 있음
 
     ```python
     {키: 값 for 요소 in iterable}
