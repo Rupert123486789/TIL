@@ -8,7 +8,7 @@
 
   * W3C	HTML5
   * WHATWG   HTML Living Standard     Apple, Google, Microsoft, Mozilla
-  * 2019년 WHATWG가 주도권 싸음웨서 승리하면서 표준이됨
+  * 2019년 WHATWG가 주도권 싸음웨서 승리하면서 표준이 됨
 
 * **Can I use?** -> strong, flex
 
