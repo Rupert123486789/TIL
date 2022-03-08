@@ -456,4 +456,3 @@
   * App url mapping : path가 많아져서 길어지는 것을 방지 / 각각의 app에 기본 urls.py 사용 / include로 url 분리
   * url template tag : 이름 붙이기
   * python requests 사이트 보기
-  * https://docs.djangoproject.com/en/3.1/howto/static-files/#managing-static-files-e-g-images-javascript-css
