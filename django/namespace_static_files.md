@@ -99,14 +99,19 @@
 * **정적 파일 사용하기 (1/3) - 기본 경로**
 
   * ![image-20220308214035935](template_view_routing.assets/image-20220308214035935.png)
+    * extends는 무조건 최상단에 위치해야함 (예외 없음)
 
 * **정적 파일 사용하기 (2/3) - 추가 경로**
 
   * ![image-20220308214114482](template_view_routing.assets/image-20220308214114482.png)
 
+    
+
 * **정적 파일 사용하기 (3/3) - STATIC_URL 확인**
 
   * ![image-20220308214153868](template_view_routing.assets/image-20220308214153868.png)
 
+    * /static/ : 이미지의 주소값을 만들어줌,  그러므로 엔드 슬래시(/) 필요
+    
     
 
