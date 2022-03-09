@@ -307,11 +307,126 @@
 
 <br>
 
+* **str method**
+  * ![image-20220309161010119](model.assets/image-20220309161010119.png)
+    * method는 필드와는 상관없으므로 makemigrations는 할 필요 없음
+
+<br>
+
+* **READ**
+  * QuerySet API method를 사용해 다양한 조회를 하는 것이 중요
+  * QuerySet API method는 크게 2가지로 분류
+    1. Methods that ✨**return new querysets**
+    2. Methods that ✨**do not return querysets**
+  * all()
+    * 현재 QuerySet의 복사본을 반환
+    * ![image-20220309161301847](model.assets/image-20220309161301847.png)
+  * get()
+    * 주어진 lookup 매개변수와 일치하는 객체를 반환
+    * 객체를 찾을 수 없으면 DoesNotExist 예외를 발생시키고, 둘 이상의 객체를 찾으면 MultipleObjectsReturned 예외를 발생 시킴
+    * 위와 같은 특징을 가지고 있기 때문에 primary key와 같이 **✨고유(unique)성을 보장하는 조회에서 사용**해야 함
+    * ![image-20220309161439092](model.assets/image-20220309161439092.png)
+  * filter()
+    * 주어진 lookup 매개변수와 일치하는 객체를 포함하는 새 QuerySet을 반환
+    * ![image-20220309161605612](model.assets/image-20220309161605612.png)
+    * 조건을 만족하는 모든 data를 보고 싶을 때 (get과 차이)
+
+<br>
+
+* **UPDATE** (기존값을 수정)
+  * ![image-20220309161738937](model.assets/image-20220309161738937.png)
+  * delete()
+    * QuerySet의 모든 행에 대해 SQL 삭제 쿼리를 수행하고, 삭제된 객체 수와 객체 유형당 삭제 수가 포함된 딕셔너리를 반환
+      * ![image-20220309161822907](model.assets/image-20220309161822907.png)
+  * 순서
+    1. DB에서 수정할 data를 가져옴
+    2. 가져온 data의 값을 변경
+    3. save
+
+<br>
+
+* **Field lookups**
+  * 조회 시 특정 검색 조건을 지정
+  * QuerySet 메서드 filter(), exclude() 및 get()에 대한 키워드 인수로 지정됨
+  * 사용 예시)
+    * Article.objects.filter(pk__gt=2)
+    * Article.objects.filter(content__contains='ja')
+
+<br>
+
+* **QueySet API**
+  * 데이터베이스 조작을 위한 다양한 QuerySet API methods는 해당 공식문서를 반드시 참고하여 학습할 것
+  * https://docs.djangoproject.com/en/3.2/ref/models/querysets/
+  * ex. QuerySet update() : 여러개의 같은 값을 변경
+
+<br>
+
+* **유효성 검사**
+  * Model instance reference
+    * https://docs.djangoproject.com/en/3.2/ref/models/instances/
+  * full_clean()으로 데이터가 올바른지 먼저 검사
+
+<br>
+
 ---
 
 <br>
 
 ### 6. Admin Site
 
-<br><br><br><br><br><br><br>
+<br>
+
+* **Automatic admin interface**
+  * 사용자가 아닌 서버의 관리자가 활용하기 위한 페이지
+  * Model class를 admin.py에 등록하고 관리
+  * django.contrib.auth 모듈에서 제공됨
+  * record 생성 여부 확인에 매우 유용하며, 직접 record를 삽입할 수도 있음
+
+<br>
+
+* **admin 생성**
+  * ![image-20220309162748105](model.assets/image-20220309162748105.png)
+  * 관리자 계정 생성 후 서버를 실행한 다음 '/admin'으로 가서 관리자 페이지 로그인
+    * 계정만 만든 경우 Django 관리자 화면에서 아무 것도 보이지 않음
+  * 내가 만든 Model을 보기 위해서는 admin.py에 작성하여 Django 서버에 등록
+  * [주의] auth에 관련된 기본 테이블이 생성되지 않으면 관리자 계정을 생성할 수 없음
+
+<br>
+
+* **admin 등록**
+  * ![image-20220309162929280](model.assets/image-20220309162929280.png)
+  * admin.py는 관리자 사이트에 Article 객체가 관리자 인터페이스를 가지고 있다는 것을 알려주는 것
+  * models.py에 정의한 `__str__`의 형태로 객체가 표현됨
+
+<br>
+
+* **ModelAdmin options**
+  * ![image-20220309163237889](model.assets/image-20220309163237889.png)
+  * list_display
+    * models.py 정의한 각각의 속성(컬럼)들의 값(레코드)을 admin 페이지에 출력하도록 설정
+    * django docs admin 검색
+  * list_filter, list_display_links 등 다양한 ModelAdmin options 참고
+  * https://docs.djangoproject.com/en/3.2/ref/contrib/admin/#modeladmin-options
+
+<br>
+
+---
+
+<br>
+
+### 7. CRUD with views
+
+<br>
+
+<br><br><br><br><br><br>
+
+---
+
+<br>
+
+### 8. 마무리
+
+<br>
+
+<br><br><br>
 
