@@ -418,11 +418,136 @@
 
 <br>
 
+* **CRUD 작성**
+  1. 프로젝타 이름
+     * crud
+  2. 앱 이름
+     * articles
+  3. 앱 등록
+
 <br>
 
-qqqqqq
+* base 템플릿 작성 및 추가 템플릿 경로 등록
+* index 페이지 작성
+* READ - 전체 게시글 조회
+* CREATE - New views
+* CREATE - Create views
+* 게시글 정렬 순서 변경
 
-<br><br><br><br><br>
+<br>
+
+* **HTTP method**
+  * GET
+    * 특정 리소스를 가져오도록 요청할 때 사용
+    * 반드시 데이터를 가져올 때만 사용해야 함
+    * DB에 변화를 주지 않음
+    * CRUD에서 R 역할을 담당
+  * POST
+    * 서버로 데이터를 전송할 때 사용
+    * 리소스를 생성/변경하기 위해 데이터를 HTTP body에 담아 전송
+    * 서버에 변경사항을 만듬
+    * CRUD에서 C/U/D 역할을 담당
+
+<br>
+
+* **사이트 간 요청 위조 (Cross-site request forgery)**
+  * 웹 애플리케이션 취약점 중 하나로 사용자가 자신의 의지와 무관하게 공격자가 의도한 행동을 하여 특정 웹페이지를 보안에 취약하게 하거나 수정, 삭제 등의 작업을 하게 만드는 공격 방법
+  *  Django는 CSRF에 대항하여 middleware와 template tag를 제공
+  * CSRF라고도 함
+
+<br>
+
+* **CSRF 공격 방어**
+  * Security Token 사용 방식 (CSRF Token)
+    * 사용자의 데이터에 임의의 난수 값을 부여해, 매 요청마다 해당 난수 값을 포함시켜 전송 시키도록 함
+    * 이후 서버에서 요청을 받을 때마다 전달된 token 값이 유효한지 검증
+  * 일반적으로 데이터 변경이 가능한 POST, PATCH, DELETE Method 등에 적용 (GET 제외)
+  * DJango CSRF token 템플릿 태그를 제공
+
+<br>
+
+* **csrf_token template tag**
+  * ![image-20220313223656657](model.assets/image-20220313223656657.png)
+  * CSRF 보호에 사용
+  * input type이 hidden으로 작성되며 value는 Django에서 생성한 hash 값으로 설정됨
+  * 해당 태그 없이 요청을 보낸다면 Django 서버는 403 forbidden을 응답
+
+<br>
+
+* **CsrfViewMiddleware**
+  * ![image-20220313223802334](model.assets/image-20220313223802334.png)
+  * CSRF 공격 관련 보안 설정은 settings.py에서 MIDDLEWARE에 작성 되어있음
+  * 실제로 요청 과정에서 urls.py 이전에 Middleware의 설정 사항들을 순차적으로 거치며 응답은 반대로 하단에서 상단으로 미들웨어를 적용시킴
+
+<br>
+
+* **[참고] Middleware**
+  * 공통 서비스 및 기능을 애플리케이션에 제공하는 소프트웨어
+  * 데이터 관리, 애플리케이션 서비스, 메시징, 인증 및 API 관리를 주로 미들웨어를 통해 처리
+  * 개발자들이 애플리케이션을 보다 효율적으로 구축할 수 있도록 지원하며, 애플리케이션, 데이터 및 사용자 사이를 연결하는 요소처럼 작동
+
+<br>
+
+* new 로직 수정
+* POST 데이터 확인
+* 게시글 작성 후 index 페이지로 이동하기
+
+<br>
+
+* **2가지 문제 발생**
+
+  1. 글을 작성 후 index 페이지가 출력되지만 게시글이 조회되지 않음
+  2. URL은 여전히 create에 머물러 있음
+
+  - 단순히 index 페이지만 render 되었을 뿐
+    - create view 함수에서 다루고 있는 데이터로 index 페이지가 render 됨
+
+<br>
+
+* **Django shortcut function - "redirect()"**
+  * 새 URL로 요청을 다시 보냄
+  * 인자에 따라 HttpResponseRedirect를 반환
+  * 브라우저는 현재 경로에 따라 전체 URL 자체를 재구성 (reconstruct)
+  * 사용 가능한 인자
+    1. model
+    2. view name: viewname can be **URL pattern name** or callable **view object.**
+    3. absolute or relative URL
+
+<br>
+
+* redirect 함수 적용
+
+<br>
+
+* **DETAIL**
+  * ![image-20220313230807113](model.assets/image-20220313230807113.png)
+  * 개별 게시글 상세 페이지
+  * 글의 번호(pk)를 활용해서 각각의 페이지를 따로 구현해야 함
+  * 무엇을 활용할 수 있을까? → **✨Variable Routing**
+  * ![image-20220313230818570](model.assets/image-20220313230818570.png)
+  * 오른쪽 pk는 variable routing을 통해 받은 pk
+  * 왼쪽 pk는 DB에 저장된 레코드의 pk (id)
+  * Detail 페이지 및 링크 작성
+  * redirect 인자 변경
+
+<br>
+
+* **DELETE** 
+  *  모든 글을 삭제 하는 것이 아니라 삭제하고자 하는 특정 글을 삭제해야 함
+  * HTTP Method POST 시에만 삭제 될 수 있도록 조건 작성
+
+<br>
+
+* **EDIT**
+  * 수정은 기존에 입력 되어 있던 데이터를 보여주는 것이 좋기 때문에 html 태그의 value 속성을 사용 (textarea 태그는 value 속성이 없으므로 태그 내부 값으로 작성)
+  * detail.html에 edit 링크 작성
+
+<br>
+
+* **UPDATE**
+  * create와 마찬가지로 별도의 '글이 수정되었습니다'라는 메시지를 출력하는 template는 필요하지 않음
+
+<br>
 
 ---
 
@@ -432,9 +557,17 @@ qqqqqq
 
 <br>
 
-CRUD CRUDCRUDCRUDCRUDCRUDCRUDCRUDCRUDCRUDCRUDCRUD
+* **Model**
+  * 웹 애플리케이션의 데이터를 구조화하고 조작하기 위한 도구
+* **Database**
+  * 체계화 된 데이터의 모임(집합)
+* **Migrations**
+  * Django가 model에 생긴 변화(필드를 추가, 모델 삭제 등)를 반영하는 방법
+* **ORM**
+  * OOP 언어를 사용하여 데이터베이스와 OOP 언어 간의 호환되지 않는 데이터를 변환하는 프로그래밍 기법
+* **Database API**
+  * DB를 조작하기 위한 도구(QuerySetAPI, CRUD)
+* **Admin Site**
+  * 사용자가 아닌 서버의 관리자가 활용하기 위한 페이지
 
-ccccccrrrrrrruuuuudddd
-
-<br><br><br>
-
+<br>
