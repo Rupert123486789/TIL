@@ -97,6 +97,7 @@
 
 * **왜 ORM을 사용할까?**
   * "우리는 DB를 객체(object)로 조작하기 위해 ORM을 사용함"
+  * ✨디테일한 부분만 low SQL로 날리고 나머지는 ORM으로 객체 조작
 
 <br>
 
@@ -330,6 +331,8 @@
     * 주어진 lookup 매개변수와 일치하는 객체를 포함하는 새 QuerySet을 반환
     * ![image-20220309161605612](model.assets/image-20220309161605612.png)
     * 조건을 만족하는 모든 data를 보고 싶을 때 (get과 차이)
+  * 💥all(), filter() : 유사 리스트 / for / update : 슬라이싱, 인덱싱은 가능하나 마이너스 인덱싱은 지원 안함
+  * set() : 하나만 가져옴
 
 <br>
 
@@ -351,6 +354,7 @@
   * 사용 예시)
     * Article.objects.filter(pk__gt=2)
     * Article.objects.filter(content__contains='ja')
+    * ✨부등호(3<= pk <=10)를 사용할 수 없으므로 pk_gte = 3 and pk_lte = 10로 사용
 
 <br>
 
@@ -397,6 +401,8 @@
   * ![image-20220309162929280](model.assets/image-20220309162929280.png)
   * admin.py는 관리자 사이트에 Article 객체가 관리자 인터페이스를 가지고 있다는 것을 알려주는 것
   * models.py에 정의한 `__str__`의 형태로 객체가 표현됨
+  * admin 등록 명령어 : admin.site.register(Student) 
+  * ✨                         어드민/사이트에/등록한다
 
 <br>
 
@@ -501,6 +507,7 @@
 
   - 단순히 index 페이지만 render 되었을 뿐
     - create view 함수에서 다루고 있는 데이터로 index 페이지가 render 됨
+    - ✨흐름이 깨지거나 중복처리 됨 / 하나의 요청에는 하나의 응답만!
 
 <br>
 

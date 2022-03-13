@@ -7,3 +7,11 @@
   * snippet generator에서 원하는 코드(trigger는 perfix)를 만든 후  copy snippet 
   * File → Preferences → user snippets → my_snippet.json.code-snippets 
   * 기존의 다른 snippet과 겹치지 않게 붙여넣고, 저장
+
+<br>
+
+* **사이트**
+  * django cookbook  : ORM 궁금한거 있을때
+  * can't Unsee
+  * csslayout.io
+  * studiomeal.com
