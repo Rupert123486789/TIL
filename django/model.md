@@ -13,7 +13,7 @@
     * 사용자가 저장하는 데이터들의 필수적인 필드들과 동작들을 포함
   * 저장된 데이터베이스의 구조(layout)
   * Django는 model을 통해 데이터에 접속하고 관리
-  * 일반적으로 각각의 model은 하나의 데이터베이스 테이블에 매핑 됨
+  * 일반적으로 각각의 model은 하나의 데이터베이스 테이블에 매핑됨
 
 <br>
 
@@ -323,12 +323,12 @@
     * 현재 QuerySet의 복사본을 반환
     * ![image-20220309161301847](model.assets/image-20220309161301847.png)
   * get()
-    * 주어진 lookup 매개변수와 일치하는 객체를 반환
+    * 주어진 lookup 매개변수와 일치하는 **✨객체(인스턴스)를 반환**
     * 객체를 찾을 수 없으면 DoesNotExist 예외를 발생시키고, 둘 이상의 객체를 찾으면 MultipleObjectsReturned 예외를 발생 시킴
     * 위와 같은 특징을 가지고 있기 때문에 primary key와 같이 **✨고유(unique)성을 보장하는 조회에서 사용**해야 함
     * ![image-20220309161439092](model.assets/image-20220309161439092.png)
   * filter()
-    * 주어진 lookup 매개변수와 일치하는 객체를 포함하는 새 QuerySet을 반환
+    * 주어진 lookup 매개변수와 일치하는 객체를 포함하는 새 **✨QuerySet을 반환**
     * ![image-20220309161605612](model.assets/image-20220309161605612.png)
     * 조건을 만족하는 모든 data를 보고 싶을 때 (get과 차이)
   * 💥all(), filter() : 유사 리스트 / for / update : 슬라이싱, 인덱싱은 가능하나 마이너스 인덱싱은 지원 안함

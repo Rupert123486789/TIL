@@ -133,7 +133,7 @@
   * 일반적으로 Application 명은 💥**복수형**으로 하는 것을 권장
     * ![image-20220307213502930](template_view_routing.assets/image-20220307213502930.png)
 
-* **Application 구조**
+* **Application 구조**(✨urls.py가 자동 생성되지는 않음)
 
   * ![image-20220307213523148](template_view_routing.assets/image-20220307213523148.png)
   * ![image-20220307213530461](template_view_routing.assets/image-20220307213530461.png)
