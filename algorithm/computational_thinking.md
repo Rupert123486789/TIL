@@ -1,6 +1,6 @@
 ## ![펭귄](array_1.assets/펭귄.png)
 
-# 문자열 (string)
+# 컴퓨터 사고력(computational thinking)
 
 
 
