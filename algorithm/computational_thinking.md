@@ -2,7 +2,7 @@
 
 # 컴퓨터 사고력(computational thinking)
 
-
+사고력사고력
 
 ### 1.  문자열
 
