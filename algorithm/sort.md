@@ -52,3 +52,6 @@
 
 ![image-20220301232632141](sort.assets/image-20220301232632141.png)
 
+* Tim sort
+  * https://d2.naver.com/helloworld/0315536
+* 위상정렬
