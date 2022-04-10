@@ -46,7 +46,48 @@
   * Model을 선언하는 것과 유사하며 같은 필드타입을 사용 (또한, 일부 매개변수도 유사함)
   * forms 라이브러리에서 파생된 Form 클래스를 상속받음
 
-<br><br><br>
+<br>
+
+* **Form 사용하기**
+
+<br>
+
+* **Form rendering options**
+
+  * `<label>` & `<input> `  쌍에 대한 3가지 출력 옵션
+
+  1.  as_p()
+     * 각 필드가 단락(`<p>` 태그)으로 감싸져서 렌더링 됨
+  2. as_ul()
+     * 각 필드가 목록 항목(`<li>` 태그)으로 감싸져서 렌더링 됨
+     * `<ul>` 태그는 직접 작성해야 함
+  3. as_table()
+     * 각 플디가 테이블(`<tr>` 태그) 행으로 감싸져서 렌더링 됨
+     * `<table>` 태그는 직접 작성해야 함
+
+<br>
+
+* **Django의 HTML input 요소 표현 방법 2가지**
+  1. Form fields (✨생산성 때문에 사용)
+     * input에 대한 유효성 검사 로직을 처리하며 템플릿에서 직접 사용 됨
+  2. Widgets
+     * 웹 페이지의 HTML input 요소 렌더링
+     * GET/POST 딕셔너리에서 데이터 추출
+     * widgets은 반드시 Form fields에 할당됨
+
+<br>
+
+* **Widgets**
+  * Django의 HTML input element 표현
+  * HTML 렌더링 처리
+  * 주의 사항
+    * Form Fields와 혼동되어서는 안됨
+    * Form Fields는 input 유효성 검사를 처리
+    * Widgets은 웹페이지에서 input element의 단순 raw한 렌더링 처리
+  * 상속, 이미  만들어진 (Model) 사용
+  *  id는 장고가 알아서 생성
+
+<br>
 
 ---
 
