@@ -167,10 +167,14 @@
 <br>
 
 * **ImageField(or FileFiled)를 사용하기 위한 몇 가지 단계**
+
   1. settings.py에 MEDIA_ROOT, MEDIA_URL 설정 = > STATIC_ROOT
   2. upload_to 속성을 정의하여 업로드 된 파일에 사용할 MEDIA_ROOT의 하위 경로를 지정
   3. 업로드 된 파일의 경로는 django가 제공하는 'url' 속성을 통해 얻을 수 있음
      * ![image-20220411003117678](HTTP_requests_Media_files.assets/image-20220411003117678.png)
+
+  * ✨MEDIA_ROOT : 물리적으로 미디어 파일이 어디 저장되는지 결정
+  * ✨MEDIA_URL : 사용자의 요청에 대한 이미지 주소를 줌
 
 <br>
 
@@ -262,6 +266,84 @@
 
 <br>
 
-### 4. 
+### 4. 이미지 업로드 (READ)
 
-<br><br>
+<br>
+
+* **이미지 경로 불러오기**
+  * article.image.url
+    * 업로드 파일의 경로
+  * article.image
+    * 업로드 파일의 파일 이름
+    * ![image-20220411004907469](HTTP_requests_Media_files.assets/image-20220411004907469.png)
+
+<br>
+
+* **이미지 출력 및 MEDIA_URL 값 확인하기**
+
+<br>
+
+* **STATIC_URL과 MEDIA_URL**
+  * static, media 파일 모두 서버에 요청해서 조회하는 것
+    * 서버에 요청하기 위해서는 url이 필요
+    * 개발자 도구 - Network 탭에서 이미지를 조회하기 위해 요청을 보내는 주소(Request URL) 확인
+
+<br>
+
+---
+
+<br>
+
+### 5. 이미지 업로드(UPDATE)
+
+<br>
+
+* **이미지 수정하기**
+  * 이미지는 바이너리 데이터(하나의 덩어리)이기 때문에 텍스트처럼 일부만 수정 하는 것은 불가능
+  * 때문에 새로운 사진으로 덮어 씌우는 방식을 사용
+  * ![image-20220411005145576](HTTP_requests_Media_files.assets/image-20220411005145576.png)
+  * ![image-20220411005153012](HTTP_requests_Media_files.assets/image-20220411005153012.png)
+    * ModleForm의 키워드 인자 순서 (data/file/~/instance 순서)
+    * 똑같은 이름의 이미지가 오면 랜덤한 이름 새로 부여
+  * 이미지가 없이 작성된 게시글은 detail 페이지가 출력되지 않는 문제 해결
+  * image가 없는 게시글의 경우 출력할 이미지 경로가 없기 때문
+    * ![image-20220411005341255](HTTP_requests_Media_files.assets/image-20220411005341255.png)
+
+<br>
+
+---
+
+<br>
+
+### 6. 이미지 Resizing
+
+<br>
+
+* **이미지 크기 변경하기**
+  * 실제 원본 이미지를 서버에 그대로 업로드 하는 것은 서버의 부담이 큰 작업
+  * `<ima>` 태그에서 직접 사이즈를 조정할 수 도 있지만 (width와 height 속성 사용), 업로드 될 때 이미지 자체를 resizing 하는 것을 고려하기
+  * django-imagekit 라이브러리 활용
+    1. django-imagekit 설치
+    2. INSTALLED_APPS에 추가
+    3. ![image-20220411005550671](HTTP_requests_Media_files.assets/image-20220411005550671.png)
+
+<br>
+
+* **원본 이미지를 재가공하여 저장 (원본 X, 썸네일 O)**
+  * django-imagekit 라이브러리 문서를 참고하여 작성
+  * ![image-20220411005646832](HTTP_requests_Media_files.assets/image-20220411005646832.png)
+  * 원본을 저장하는게 아니라 사이즈 변환해서 저장
+
+<br>
+
+* **원본 이미지를 재가공하여 저장 (원본 O, 썸네일 O)**
+
+  * django-imagekit 라이브러리 문서를 참고하여 작성
+
+    * ![image-20220411005812152](HTTP_requests_Media_files.assets/image-20220411005812152.png)
+
+  * 추가된 ImageSpecField() 필드 사용
+
+    * ![image-20220411005838892](HTTP_requests_Media_files.assets/image-20220411005838892.png)
+
+    

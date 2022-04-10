@@ -15,3 +15,4 @@
   * can't Unsee
   * csslayout.io
   * studiomeal.com
+  * django github 가서 코드 보기(Form에서 없는 Filed도 있음 / 💥문서 확인)
