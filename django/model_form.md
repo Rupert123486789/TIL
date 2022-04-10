@@ -6,10 +6,6 @@
 
 <br>
 
-* 각각 model을 하나의 데이터 베이스 테이블에 매핑
-
-<br>
-
 ### 1.  Form Class
 
 <br>
@@ -21,7 +17,6 @@
   * 이렇게 사용자가 입력한 데이터를 검증하는 것을 '유효성 검증'이라고 하는데, 이 과정을 코드로 모두 구현하는 것은 많은 노력이 필요한 작업임
   * Django는 이러한 과중한 작업과 반복 코드를 줄여줌으로써 이 작업을 훨씬 쉽게 만들어 줌
     * "Django Form"
-  * ✨model로 레이아웃을 짜고, 그 레이아웃 기반으로 DB 생성
 
 <br>
 
@@ -49,6 +44,9 @@
 <br>
 
 * **Form 사용하기**
+  * context로 넣음 => template로 보내겠다
+  * ✨context로 값을 전달하지 않으면 html에서 볼 수 없음
+
 
 <br>
 
@@ -68,12 +66,15 @@
 <br>
 
 * **Django의 HTML input 요소 표현 방법 2가지**
-  1. Form fields (✨생산성 때문에 사용)
+  1. Form fields 
      * input에 대한 유효성 검사 로직을 처리하며 템플릿에서 직접 사용 됨
   2. Widgets
      * 웹 페이지의 HTML input 요소 렌더링
      * GET/POST 딕셔너리에서 데이터 추출
      * widgets은 반드시 Form fields에 할당됨
+  
+  * attrs :  HTML에 들어가는 속성값을 설정 - 부트스트랩 적용
+  * 추후에 결국은 MTV 중 T는 vue.js로 넘김 / django는 MV 역할만 / API 서버
 
 <br>
 
@@ -84,8 +85,16 @@
     * Form Fields와 혼동되어서는 안됨
     * Form Fields는 input 유효성 검사를 처리
     * Widgets은 웹페이지에서 input element의 단순 raw한 렌더링 처리
-  * 상속, 이미  만들어진 (Model) 사용
-  *  id는 장고가 알아서 생성
+  * label과 input 태그를 직접 작성하고 있지 않으므로 class의 속성값(Form Field 나 widget)으로 컨트롤
+
+<br>
+
+* **Form field 및 widget 응용**
+  * itearble => 튜플로 넣어줌
+  * 튜플의 왼쪽 : value 값
+  * 튜플의 오른쪽 : 사용자에게 출력되는 값
+  * 15-9 : select가 기본값이라 없어도 됨
+  * 15- 11 : 장고가 권장하는 스타링 가이드
 
 <br>
 
@@ -99,6 +108,8 @@
 
 * **Intro**
   * Django Form을 사용하다 보면 Model에 정의한 필드를 유저로 부터 입력 받기 위해 Form에서 Model 필드를 재정의하는 행위가 중복 될 수 있음
+    * text, content 2개를 받는 것은 model에서 그 2개를 받기 때문
+    * model filed가 여러개면 form field와 매칭되어 여러번 작업 => 그래서 model form 사용
   * 그래서 Django는 Model을 통해 Form Class를 만들 수 있는 Model Form이라는 Helper 제공
 
 <br>
@@ -114,6 +125,7 @@
   * forms 라이브러리에서 파생된 Model Form 클래스를 상속 받음
   * 정의한 클래스 안에 Meta 클래스를 선언하고, 어떤 모델을 기반으로 Form을 작성할 것인지에 대한 정보를 Meta 클래스에 지정
     * [주의] 클래스 변수 fields와 exclude는 동시에 사용할 수 없음
+  * ✨model = Article => 인스턴스 생성 (`Article()`)이 아니고, 모델 정보를 넘기는 것!
 
 <br>
 
@@ -128,6 +140,12 @@
   * [참고] Meta 데이터
     * "데이터에 대한 데이터"
     * ex. 사진 촬영 - 사진 데이터 - 사진의 메타 데이터 (촬영 시각, 렌즈, 조리개 값 등)
+  * model에 정의한 field 정보를 formp에서 적용하기 위함
+  * 💥두 가지 방식(Model Form / Form)은 역할이 다른것!
+  * 회원가입 => DB에 저장 => Model Form
+  * 로그인 => DB에 저장 X / 인증만 하면 됨 => Form
+  * 일부만 제외할 때 exclude / fields와 exclude를 같이 사용 할 수는 없음
+  * Model Form과 DB는 밀접한 연관 / Form : 저장은 안 하지만 사용자의 정보는 받아야 할 때 
 
 <br>
 
@@ -137,12 +155,12 @@
 
 <br>
 
-* **create view 수정**
-  * 이미 처음부터 존재하는 앱들
+* **create view 수정** 
+  * 여러 데이터가 들어와도 한꺼번에 받기
 
 <br>
 
-* is_valid() method
+* **is_valid() method**
   * 유효성 검사를 실행하고, 데이터가 유효한지 여부를 boolean으로 반환
   * 데이터 유효성 검사를 보장하기 위한 많은 테스트에 대해 Django는 is_valid()를 제공
   * [참고] 유효성 검사
@@ -154,20 +172,25 @@
 * **The save() method**
   * Form에 바인딩 된 데이터에서 데이터 베이스 객체를 만들고 저장
   * Model Form의 하위(sub) 클래스는 기존 모델 인스턴스를 키워드 인자 **✨instance**로 받아 들일 수 있음
-    * 이것이 제공되면 save()는 해당 인스턴스를 수정 (UPDATE)
-    * 제공되지 않은 경우 save()는 지정된 모델의 새 인스턴스를 만듦 (CREATE)
+    * ✨제공되지 않은 경우 save()는 지정된 모델의 새 인스턴스를 만듦 (CREATE) - instance X
+    * ✨이것이 제공되면 save()는 해당 인스턴스를 수정 (UPDATE) - instance 존재
   * Form의 유효성이 확인되지 않은 경우(hasn't been validated) save()를 호출하면 form.errors를 확인하여 에러 확인 가능
 
 <br>
 
 * **create view 함수 구조 변경**
   * new view 함수, url path 삭제
-    * 출력 표현을 바꾸는 것 뿐이라 DB에 영향을 주지는 않음 (makemigrations 해도 변경 없음)
-    * 변경 사항에 따라 다름 헷갈리면 그냥 makemigrations 하자
   * new.html => create.html 이름 변경 / 이제는 action 값이 없어도 동작
+    * HTML form 태그의 특징 : action에 값이 없으면 현재의 url로 요청을 보냄 / 가능은 하나 권장하지는 않음 / 명시적을 작성
   * create 페이지 링크 작성
   * input 태그에 공백 데이터를 넣어보고 글 작성 => 에러 메시지 출력 확인
-    * objects는 고정
+  * ✨new는 GET / Create는 POST => 메서드만 다름 => 하나의 url로 합치고, view함수로 합쳐서 메서드만으로 코드를 분리
+  * 28-21 : 유효성 검사 통과 못한 form => 에러 메시지 / else에서의 form => 빈 값
+  * 28-22 : NoRevers Match 에러 => url만 보면 됨
+  * 28-23 : 에러 메시지 렌더링
+  * 💥UPDATE에서 instance 안쓰면 CREATE가 됨. 주의!!!
+  * 💥context는 유효성 검사를 통과하지 못해서 생성되는 에러 메시지도 처리하기 위해 else문 밖으로 나와있음!
+  * ✨`__all__`: 사용자로 부터 입력을 받지않는 데이터는 제외 됨(ex. auto_now나 auto_now_add 속성이 들어간 field의 데이터(updated, created)는 제외)
 
 <br>
 
@@ -185,12 +208,12 @@
 
 * **forms.py 파일 위치**
   * Form class는 forms.py 뿐만 아니라 다른 어느 위치에 두어도 상관 없음
-  * 하지만 되도록 **💥app폴더/forms.py**에 작성하는 것이 일반적인 구조
+  * 하지만 되도록 **💥app폴더/forms.py**에 작성하는 것이 일반적인 구조(관행적)
 
 <br>
 
-* **Form & Model Form 비교**
-  * Form (유일한 값 조회)
+* **Form & Model Form 비교**(구조가 약간 다름)
+  * Form 
     * 어떤 Model에 저장해야 하는지 알 수 없으므로 유효성 검사 이후 cleaned_data 딕셔너리를 생성
     * cleaned_data 딕셔너리에서 데이터를 가져온 후 .save() 호출해야 함
     * Model에 연관되지 않은 데이터를 받을 때 사용
@@ -200,11 +223,26 @@
 
 <br>
 
+* **cleaned_data 구조 예시**
+  * Model Form 알아서 매칭 => 장고가 위치를 알고 있음(model을 기반을 만들어서)
+  * Form은 일일히 매칭 시켜야됨
+
+<br>
+
+* **create 함수**
+  * 왜 POST를 기준으로 나눴을까?
+    * else에서의 의미는 'GET일때'가 아니라 ✨'POST가 아닐때'임 / 다른 메서드(PUT, DELETE 등등)도 처리가 가능
+    * POST에서만 DB조작이 가능하기 때문에
+
+<br>
+
 * **Widgets 활용하기**
   * Django의 HTML input element 표현
   * HTML 렌더링을 처리
   * 2가지 작성 방식을 가짐
     * 두번째 방식 권장
+  * Textinput : 위젯의 기본값
+  * 💥field는 widget과 같은 레벨이므로 widget 안에서 작성하면 안됨!
 
 <br>
 
@@ -214,5 +252,57 @@
 
 ### 3. Rendering fields manually
 
-<br><br><br><br><br><br><br>
+<br>
+
+* **수동으로 Form 작성하기**
+  1. Rendering fields manually
+  2. Looping over the form's fields ({% for %})
+
+<br>
+
+* **1. Rendering fields manually **
+
+<br>
+
+* **2. Looping over the form's fields**
+
+<br>
+
+* **Bootstrap과 함께 사용하기**
+  1. Bootstrap class with widgets
+  2. Django Bootstrap 5 Library
+
+<br>
+
+* **1. Bootstrap Form class**
+  * Bootstrap Forms 사용하기
+    * https://getbootstrap.com/docs/5.1/forms/overview/
+  * 핵심 클래스
+    * form-control
+  * Bootstrap Form의 핵심 class를 widget에 작성
+  * 에러 메시지 with bootstrap alert 컴포넌트
+
+<br>
+
+* **2. Django Bootstrap Library**
+  * django-bootstrap v5
+    * form class에 bootstrap을 적용시켜주는 라이브러리
+    * ![image-20220410234928052](model_form.assets/image-20220410234928052.png)
+    * 패키지 목록 업데이트
+    * ![image-20220410234955240](model_form.assets/image-20220410234955240.png)
+    * 설치한 라이브러리 적용해보기
+    * ![image-20220410235015674](model_form.assets/image-20220410235015674.png)
+  * 라이브러리를 사용하면 편하지만 자율성은 제한됨
+
+<br>
+
+---
+
+<br>
+
+### 기타
+
+* rediect : 경로를 요청 / article:index / 각각 APP name과 name
+* render : 사람들에게 보여줌 / articles/form.html / 각각 파일 이름
+* 삭제는 POST 처리이므로 a태그는 불가능 / form태그만 가능 / 여기서는 action을 비우면 안됨 - 비울 경우 detail 페이지만 불러옴
 
