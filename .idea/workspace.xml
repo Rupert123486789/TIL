@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05bd5421-67ef-42c3-ae87-e67d9665db3c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/django/1_N.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/development/ploblem soving/backjoon/step5/10818.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/development/ploblem soving/backjoon/step5/1546.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/development/ploblem soving/backjoon/step5/2562.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/development/ploblem soving/backjoon/step5/2577.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/development/ploblem soving/backjoon/step5/3052.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/development/ploblem soving/backjoon/step5/4344.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/development/ploblem soving/backjoon/step5/8958.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/development/ploblem soving/backjoon/step6/1065.md" beforeDir="false" afterPath="$PROJECT_DIR$/development/ploblem soving/backjoon/step5/1065.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/development/ploblem soving/backjoon/step6/15596.md" beforeDir="false" afterPath="$PROJECT_DIR$/development/ploblem soving/backjoon/step5/15596.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/development/ploblem soving/backjoon/step6/4673.md" beforeDir="false" afterPath="$PROJECT_DIR$/development/ploblem soving/backjoon/step5/4673.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +31,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="05bd5421-67ef-42c3-ae87-e67d9665db3c" name="Default Changelist" comment="" />
