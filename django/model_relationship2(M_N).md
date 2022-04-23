@@ -2,348 +2,160 @@
 
 <br>
 
-## Handling HTTP requests & Media files
+## Model Relationship II
 
 <br>
 
-### 1.  Handling HTTP requests
+## Intro
 
 <br>
 
-* **Handling HTTP request**
-  * Django에서 HTTP 요청을 처리하는 방법
-    1. Django shortcut functions
-    2. View decorators
+### 1. 병원 진료 기록 시스템
 
 <br>
 
-* **1. Django shortcuts functions**
-  * django.shortcust 패키지는 개발에 도움 될 수 잇는 여러 함수와 클래스를 제공
-  * shortcuts function 종류
-    * render()
-    * redirect()
-    * get_object_or_404()
-      * ✨단일 객체를 조회하는것은 get과 똑같지만 예외가 발생했을대 다르게 return 해줌(500 -> 404)
-    * get_list_or_404()
+* **병원 진료 기록 시스템을 통한 M:N 관계 학습**
+  * 환자와 의사가 사용하는 병원 진료 기록 시스템 구축
+    * 병원 시스템에서 가장 핵심이 되는 객체는 무엇일까? => 환자와 의사
+    * 이 둘의 관계를 어떻게 표현할 수 있을까?
+* **시작하기 전**
+  * 모델링은 현실 세계를 최대한 유사하게 반영하기 위한 것
+  * 우리 일상에 가까운 예시를 통해 DB를 모델링하고, 그 내부에서 일어나는 데이터의 흐름을 어떻게 제어할 수 있을지 고민해보기
 
 <br>
 
-* **get_object_or_404()**
-  * 모델 manager인 objects에서 get()을 호출하지만, 해당 객체가 없을 경우 DoesNotExist 예외 대신 Http 404를 raise
-  * get()에 경우 조건에 맞는 데이터가 없을 경우에 예외를 발생 시킴
-    * 코드 실행 단계에서 발생한 예외 및 에러에 대해서 브라우저는 http status code 500으로 인식함
-  * ✨**상황에 따라 적절한 예외 처리**를 하고, 클라이언트에게 **✨올바른 에러 상황을 전달하는 것** 또한 개발의 중요한 요소 중 하나
-  * index 페이지에서는 사용하면 안됨
-    * 게시판이 비어 있으면 404를 줘서 적절하지 않은 사용 / 첫번째 글이 없으면 메인 페이지가 안 뜸
-  * API로 서버를 쓸 때 사용 
-    * ex. TMDB : 영화목록 조회 - JSON - 목록 없으면 404
+* **1. 1:N의 한계**
 
-<br>
+  * 1:N 모델 관계 설정
 
-* **2. Django View decorators**
-  * Django는 다양한 HTTP 기능을 지원하기 위해 view 함수에 적용할 수 있는 여러 데코레이터를 제공
-  * [참고] Decorator(데코레이터)
-    * 어떤 함수에 기능을 추가하고 싶을 대, 해당 함수를 수정하지 않고 기능을 연장 해주는 함수
-    * 즉, 원본 함수를 수정하지 않으면서 추가 기능만을 구현할 때 사용
-  * Allowed HTTP methods
-    * 요청 메서드에 따라 view 함수에 대한 엑세스를 제한
-    * 요청이 조건을 충족시키지 못하면 HttpResponseNotAllowed을 return (405 Method Not Allowed)
-    * require_http_method(), require_POST(), require_safe(), require_GET()
-      1. require_http_method()
-         * view 함수가 특정한 method 요청에 대해서만 허용하도록 하는 데코레이터
-      2. require_POST() => delete
-         * view 함수가 POST method 요청만 승인하도록 하는 데코레이터
-      3. require_safe() => GET => index, detail
-         * view 함수가 GET 및 HEAD method만 허용하도록 요구하는 데코레이터
-         * django는 require_GET 대신 require_safe를 사용하는 것을 권장	
-  * View decorator 작성
-  * delete view 함수 코드 변경
-    * 불필요해진 코드 삭제
-  * URL로 delete 요청 후 405 http status code 확인
+  * 의사 2명과 환자 2명 생성
 
-<br>
+  * 1번 환자가 1번 의사의 진료를 마치고, 2번 의사에게도 방문하려고 한다면, 새로운 예약을 생성해야 함.
 
-* **결론**
-  * HTTP 요청에 따라 적절한 예외처리 혹은 데코레이터를 사용해 서버를 보호하고 클라이언트에게 정확한 상황을 제공하는 것의 중요성
+  * 기존의 예약을 유지한 상태로 새로운 예약을 생성
 
-<br>
+  * 새로 생성한 3번 환자는 1번 환자와 다름
 
----
+  * 한 번에 두 의사에게 진료를 받고자 함
 
-<br>
+  * 하나의 외래 키에 2개의 의사 데이터를 넣을 수 없음
 
-### 2. Media files(이미지 업로드)
+  * 정리
 
-<br>
-
-* **Media files**
-  * 미디어 파일
-  * 사용자가 웹에서 업로드하는 정적 파일 (user-uploaded)
-  * 유저가 업로드 한 모든 정적 파일
-
-<br>
-
-* **Model field**
-  * ImageField()
-    * 이미지 업로드에 사용하는 모델 필드
-    * FileField를 상속받는 서브 클래스이기 때문에 FileField의 모든 속성 및 메서드를 사용 가능하며, 더해서 사용자에 의해 업로드 된 객체가 유효한 이미지인지 검사함
-    * ImageField 인스턴스는 **✨최대 길이가 100자인 문자열로 DB에 생성(사진으로 저장되는게 아니라 이미지의 경로가 저장됨)**되며, max_length 인자를 사용하여 최대 길이를 변경 할 수 있음
-    * ✨[주의] 사용하려면 반드시 Pillow 라이브러리가 필요
-  * FileField()
-    * 파일 업로드에 사용하는 모델 필드
-    * 2개의 선택 인자를 가지고 있음
-      1. upload_to
-      2. storage
-
-<br>
-
-* **ImageField 작성**
-  * upload_to = 'image/'
-    * 실제 이미지가 저장되는 경로를 지정
-  * blank=True
-    * 이미지 필드에 빈 값(빈 문자열)이 허용되도록 설정(이미지를 선택적으로 업로드 할 수 있도록) / 필수 선택 안해도 되게 해줌
-    * ![image-20220411001959713](HTTP_requests_Media_files.assets/image-20220411001959713.png)
-
-<br>
-
-* **'upload_to' argument**
-  * 업로드 디렉토리와 파일 이름을 설정하는 2가지 방법을 제공
-    1. 문자열 값이나 경로 지정
-    2. 함수 호출
-
-<br>
-
-* **'upload_to' argument - 1. 문자열 경로 지정 방식**
-  * 파이썬의 strftime() 형식이 포함될 수 있으며, 이는 파일 업로드 날짜/시간으로 대체 됨
-
-<br>
-
-* **[참고] time 모듈의 strftime()**
-  * time.strftime(format[, t])
-  * 날짜 및 시간 객체를 문자열 표현으로 변환하는 데 사용됨
-  * 하나 이상의 형식화된 코드 입력을 받아 문자열 표현을 반환
-
-<br>
-
-* **'upload_to' argument - 2. 함수 호출 방식**
-  * 반드시 2개의 인자(instance, filename)를 사용 함
-    1. instance
-       * FileField가 정의된 모델의 인스턴스
-       * 대부분 이 객체는 아직 데이터베이스에 저장되지 않았으므로 PK 값이 아직 없을 수 있음
-    2. filename
-       * 기존 파일에 제공된 파일 이름
-    3. ![image-20220411002414281](HTTP_requests_Media_files.assets/image-20220411002414281.png)
-
-<br>
-
-* **Model field option - "blank"**
-  * 기본 값 : False
-  * True인 경우 필드를 비워 둘 수 있음
-    * DB에는 ''(빈 문자열)이 저장됨
-  * 유효성 검사에서 사용 됨(is_valid)
-    * 모델 필드에 blank = True를 작성하면 form 유효성 검사에서 빈 값을 입력할 수 있음
-
-<br>
-
-* **Model field option - "null"**
-  * 기본 값 : False
-  * True인 경우 django는 빈 값에 대해 DB에 NULL로 저장
-  * 주의 사항
-    * CharField, TextField와 같은 **✨문자열 기반 필드에는 사용하는 것을 피해야 함**
-    * 문자열 기반 필드에 True로 설정 시 '데이터 없음(no data)'에 "빈 문자열(1)"과 "NULL(2)"의 2가지 가능한 값이 있음을 의미하게 됨
-    * 대부분의 경우 "데이터 없음"에 대해 두 개의 가능한 값을 갖는 것은 중복되는 것이며, Django는 NULL이 아닌 빈 문자열을 사용하는 것이 규칙
-  * 빈 값과 None/Null은 다름
-
-<br>
-
-* **blank & null 비교**
-  * blank
-    * Validation - related
-  * null
-    * Database - related
-  * 문자열 기반 및 비문자열 기반 필드 모두에 대해 null option은 DB에만 영향을 미치므로, form에서 빈 값을 허용하려면 **✨blank = True**를 설정해야 함
-  * ![image-20220411002941602](HTTP_requests_Media_files.assets/image-20220411002941602.png)
-
-<br>
-
-* **ImageField(or FileFiled)를 사용하기 위한 몇 가지 단계**
-
-  1. settings.py에 MEDIA_ROOT, MEDIA_URL 설정 = > STATIC_ROOT
-  2. upload_to 속성을 정의하여 업로드 된 파일에 사용할 MEDIA_ROOT의 하위 경로를 지정
-  3. 업로드 된 파일의 경로는 django가 제공하는 'url' 속성을 통해 얻을 수 있음
-     * ![image-20220411003117678](HTTP_requests_Media_files.assets/image-20220411003117678.png)
-
-  * ✨MEDIA_ROOT : 물리적으로 미디어 파일이 어디 저장되는지 결정
-  * ✨MEDIA_URL : 사용자의 요청에 대한 이미지 주소를 줌
-
-<br>
-
-* **MEDIA_ROOT**
-  * 사용자가 업로드 한 파일(미디어 파일)들을 보관할 디렉토리의 절대 경로
-  * django는 성능을 위해 업로드 파일은 데이터베이스에 저장하지 않음
-    * 실제 데이터베이스에 저장되는 것은 **✨파일의 경로** - 문자열
-  * [주의] MEDIA_ROOT는 STATIC_ROOT와 반드시 다른 경로로 지정해야 함
-    * ![image-20220411003248072](HTTP_requests_Media_files.assets/image-20220411003248072.png)
-
-<br>
-
-* **MEDIA_URL**
-  * MEDIA_ROOT에서 제공되는 미디어를 처리하는 URL
-  * 업로드 된 파일의 주소(URL)를 만들어 주는 역할
-    * 웹 서버 사용자가 사용하는 public URL
-  * 비어 있지 않은 값으로 설정 한다면 반드시 slash(/)로 끝나야 함
-  * [주의] MEDIA_URL은 STATIC_URL과 반드시 다른 경로로 지정해야 함
-    * ![image-20220411003406199](HTTP_requests_Media_files.assets/image-20220411003406199.png)
-
-<br>
-
-* **개발 단계에서 사용자가 업로드 한 파일 제공하기**
-  * settings.MEDIA_URL
-    * 업로드 된 파일의 URL
-  * settings.MEDIA_ROOT
-    * MEDIA_URL을 통해 참조하는 파일의 실제 위치
-    * ![image-20220411003520766](HTTP_requests_Media_files.assets/image-20220411003520766.png)
-    * +로 연결하는 이유 : 리스트 라서
-
-<br>
-
----
-
-<br>
-
-### 3. 이미지 업로드(CREATE)
-
-<br>
-
-* 게시글 작성 form에 enctype 속성 지정
-  * ![image-20220411004006915](HTTP_requests_Media_files.assets/image-20220411004006915.png)
-
-* **form 태그 - enctype(인코딩) 속성**
-  1. multipart / form-data
-     * 파일 / 이미지 업로드 시에 반드시 사용해야 함 (전송되는 데이터의 형식을 지정)
-       * Input이 파일일때는 인코딩 속성이 필요함
-     * `<input tpye = "file"`을 사용할 경우에 사용
-  2. application / x-www-form-urlencoded
-     * (기본값) 모든 문자 인코딩
-  3. text / plain
-     * 인코딩을 하지 않은 문자 상태로 전송
-     * 공백은 '+' 기호로 변환하지만, 특수 문자는 인코딩 하지 않음
-
-<br>
-
-* input 요소의 accept 속성 확인
-  * ![image-20220411004032315](HTTP_requests_Media_files.assets/image-20220411004032315.png)
-* **input 요소 - accept 속성**
-  * 입력 허용할 파일 유형을 나타내는 문자열
-  * 쉼표로 구분된 "고유 파일 유형 지정자" (unique file type specifiers)
-  * **✨파일을 검증 하는 것은 아님** (accept 속성 값을 image라고 하더라도 비디오나 오디오 및 다른 형식 파일을 제출할 수 있음)
-  * 고유 파일 유형 지정자
-    * `<input type = "file">`에서 선택할 수  있는 파일의 종류를 설명하는 문자열
-  * 파일 업로드 시 허용할 파일 형식에 대해 자동으로 필터링
-    * ![image-20220411004332544](HTTP_requests_Media_files.assets/image-20220411004332544.png)
-
-<br>
-
-* **views.py 수정**
-  * 업로드 한 파일은 request.FILES 객체로 전달됨
-    * ![image-20220411004407625](HTTP_requests_Media_files.assets/image-20220411004407625.png)
-    * Title과 Content = > request.POST
-    * 파일 => request.FILES
-    * 서버에서 다른 값으로 넘어감
-
-<br>
-
-* **DB 및 파일 트리 확인**
-  * 실제 파일 위치
-    * MEDIA_ROOT/images/
-    * ![image-20220411004531070](HTTP_requests_Media_files.assets/image-20220411004531070.png)
-  * DB에 저장되는 것은 이미지 파일 자체가 아닌 **✨파일의 경로**
-    * ![image-20220411004553604](HTTP_requests_Media_files.assets/image-20220411004553604.png)
-
-<br>
-
----
-
-<br>
-
-### 4. 이미지 업로드 (READ)
-
-<br>
-
-* **이미지 경로 불러오기**
-  * article.image.url
-    * 업로드 파일의 경로
-  * article.image
-    * 업로드 파일의 파일 이름
-    * ![image-20220411004907469](HTTP_requests_Media_files.assets/image-20220411004907469.png)
-
-<br>
-
-* **이미지 출력 및 MEDIA_URL 값 확인하기**
-
-<br>
-
-* **STATIC_URL과 MEDIA_URL**
-  * static, media 파일 모두 서버에 요청해서 조회하는 것
-    * 서버에 요청하기 위해서는 url이 필요
-    * 개발자 도구 - Network 탭에서 이미지를 조회하기 위해 요청을 보내는 주소(Request URL) 확인
-
-<br>
-
----
-
-<br>
-
-### 5. 이미지 업로드(UPDATE)
-
-<br>
-
-* **이미지 수정하기**
-  * 이미지는 바이너리 데이터(하나의 덩어리)이기 때문에 텍스트처럼 일부만 수정 하는 것은 불가능
-  * 때문에 새로운 사진으로 덮어 씌우는 방식을 사용
-  * ![image-20220411005145576](HTTP_requests_Media_files.assets/image-20220411005145576.png)
-  * ![image-20220411005153012](HTTP_requests_Media_files.assets/image-20220411005153012.png)
-    * ModleForm의 키워드 인자 순서 (data/file/~/instance 순서)
-    * 똑같은 이름의 이미지가 오면 랜덤한 이름 새로 부여
-  * 이미지가 없이 작성된 게시글은 detail 페이지가 출력되지 않는 문제 해결
-  * image가 없는 게시글의 경우 출력할 이미지 경로가 없기 때문
-    * ![image-20220411005341255](HTTP_requests_Media_files.assets/image-20220411005341255.png)
-
-<br>
-
----
-
-<br>
-
-### 6. 이미지 Resizing
-
-<br>
-
-* **이미지 크기 변경하기**
-  * 실제 원본 이미지를 서버에 그대로 업로드 하는 것은 서버의 부담이 큰 작업
-  * `<ima>` 태그에서 직접 사이즈를 조정할 수 도 있지만 (width와 height 속성 사용), 업로드 될 때 이미지 자체를 resizing 하는 것을 고려하기
-  * django-imagekit 라이브러리 활용
-    1. django-imagekit 설치
-    2. INSTALLED_APPS에 추가
-    3. ![image-20220411005550671](HTTP_requests_Media_files.assets/image-20220411005550671.png)
-
-<br>
-
-* **원본 이미지를 재가공하여 저장 (원본 X, 썸네일 O)**
-  * django-imagekit 라이브러리 문서를 참고하여 작성
-  * ![image-20220411005646832](HTTP_requests_Media_files.assets/image-20220411005646832.png)
-  * 원본을 저장하는게 아니라 사이즈 변환해서 저장
-
-<br>
-
-* **원본 이미지를 재가공하여 저장 (원본 O, 썸네일 O)**
-
-  * django-imagekit 라이브러리 문서를 참고하여 작성
-
-    * ![image-20220411005812152](HTTP_requests_Media_files.assets/image-20220411005812152.png)
-
-  * 추가된 ImageSpecField() 필드 사용
-
-    * ![image-20220411005838892](HTTP_requests_Media_files.assets/image-20220411005838892.png)
+    * 새로운 예약을 생성하는 것이 불가능
+      * 새로운 객체를 생성해야 함
+    * 여러 의사에게 진료 받은 기록을 환자 한 명에 저장할 수 없음
+      * 외래 키에 '1, 2' 형식의 데이터를 사용 할 수 없음
 
     
+
+<br>
+
+* **2. 중개 모델**
+  * 중개 모델(혹은 중개 테이블, Associative Table) 작성
+  * 중개 모델과의 모델 관계 확인
+    * ![image-20220423203618870](model_relationship2(M_N).assets/image-20220423203618870.png)
+  * 의사 1명과 환자 1명 생성 및 예약 생성
+  * 예약 내역 조회
+  * 의사의 예약 환자 조회
+  * 환자의 담당 의사 조회
+  * 환자 1명 추가 생성 및 1번 의사에게 예약 생성
+  * 의사의 예약 환자 조회
+  * ✨중개 모델에 의해 다대다 관계가 설정되었음
+
+<br>
+
+* **3. ManyToManyField**
+  * 다대다 (M:N, many-to-many) 관계 설정 시 사용하는 모델 필드
+  * 하나의 필수 위치인자(M:N 관계로 설정할 모델 클래스)가 필요
+  * ManyToManyField 작성 (중개 모델 삭제)
+    * 필드 작성 위치는 Doctor 또는 Patient 모두 작성 가능(✨어디든 상관 없음)
+    * 💥1:N과 의 차이점 
+      * M:N 관계를 맺는 2개의 테이블에는 아무런 변화가 없음(외래키 X)
+      * 2개의 테이블이 같이 사용하는 중개 테이블이 생성됨
+      * 1:N에서는 외래키가 무조건 N쪽에 위치(종속관계)
+      * M:N은 어느 곳에도 서로 종속되지 않음(대등한 관계)
+    * 단지 참조 / 역참조의 관계만 바뀜
+      * 중개 모델 일경우는 둘다 역참조임
+      * ManyToManyField에서는 필드를 중심으로 참조/역참조
+  * ManyToManyField로 인해 생성된 중개 테이블 확인
+  * 의사 1명과 환자 2명 생성
+  * 예약 생성 (참조)
+    1. patient1이 doctor1에게 예약
+    2. patient1이 예약한 의사 목록 확인
+    3. doctor1에게 예약된 환자 목록 확인
+  * 예약 생성 (역참조)
+    1. doctor1이 patient2를 예약
+    2. doctor1에게 예약된 환자 목록 확인
+    3. patient2, patien1이 각각 예약한 의사 목록 확인
+    4. add라는 queryser API가 생김
+    5. ✨역참조로 진행했을뿐, 환자가 참조했을때의 데이터 결과와 동일함
+  * 중개 테이블 데이터 확인
+  * 예약 삭제 (역참조)
+    1. doctor1이 patient1 진료 예약 취소
+    2. doctor1에게 예약된 환자 목록 확인
+    3. patient1이 예약한 의사 목록 확인
+  * 예약 삭제 (참조)
+    1. patient2가 doctor1 진료 예약 취소
+    2. patient2가 예약한 의사 목록 확인
+    3. doctor1에게 예약된 환자 목록 확인
+  * 중계 테이블 데이터 확인
+
+<br>
+
+* **4. related_name**
+  * target model(관계 필드를 가지지 않은 모델-의사)이 source model(관계 필드를 가진 모델-환자)을 참조할 때(역참조) 사용할 manager의 이름을 설정
+  * ✨역참조 : 타겟 모델이 소스모델을 참조한다
+  * 즉, 역참조 시에 사용하는 manager의 이름을 설정
+  * ForeignKey의 related_name과 동일
+    * ![image-20220423204956792](model_relationship2(M_N).assets/image-20220423204956792.png)
+    * patient_ser => patients (복수형, M:N임을 나타내기 위해)
+  * doctor1의 예약 호나자 목록 확인 해보기 (역참조)
+  * ✨related_name 설정 후 기존의 _set manager는 더 이상 사용할 수 없음
+
+<br>
+
+* **중개 모델(테이블) in Django**
+  * django는 ManyToManyField를 통해 중개 테이블을 자동으로 생성
+  * 그렇다면 중개 테이블을 직접 작성하는 경우는 없을까?
+    * 중개 테이블을 수동으로 지정하려는 경우 through 옵션을 사용하여, 중개 테이블을 나타내는 Django 모델을 지정할 수 있음 (다음 챕터에서 확인)
+    * ✨가장 일반적인 용도는 중개 테이블에 추가 데이터를 사용해 다대다 관계로 연결하려는 경우에 사용
+      * ex. 예약시간 / 병명 등 추가 데이터를 넣을 수가 없음 (ManyToManyField 만으로는)
+      * 직접 작성해야함
+
+<br>
+
+* **요약**
+  * 실제 Doctor와 Patient 테이블이 변하는 것은 없음
+  * 1:N 관계는 완전한 종속의 관계이지만, M:N 관계는 **💥의사에게 진찰받는 환자, 환자를 진찰하는 의사의 두가지 형태로 모두 표현이 가능한 것**
+
+<br>
+
+----
+
+<br>
+
+## ManyToManyField
+
+<br>
+
+### 1. 좋아요 기능 (Like)
+
+<br><br><br><br><br>
+
+---
+
+<br>
+
+### 2. Profile Page
+
+<br><br><br><br><br>
+
+---
+
+<br>
+
+### 3. 팔로우 기능 (Follow)
+
+<br><br><br><br><br><br><br>
+
