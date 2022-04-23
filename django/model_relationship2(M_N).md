@@ -232,9 +232,50 @@
 
 ### 1. 좋아요 기능 (Like)
 
-<br><br><br><br><br>
+<br>
 
-<br><br><br><br><br><br><br><br><br><br><br><br>
+* **Like 구현**
+  * ManyToManyField 작성 후 마이그레이션
+  * 에러 발생 원인
+    * like_users 필드 생성 시 자동으로 역참조는 .article_set 매니저를 생성
+    * 그러나 이전 1:N(User:Article) 관계에서 이미 해당 매니저 이름을 사용 중이기 때문
+    * User와 관계된 ForeignKey 또는 ManyToManyField 중 하나에 related_name 추가 필요
+  * related_name 설정 후 마이그레이션 다시 진행
+    * ![image-20220423211811981](model_relationship2(M_N).assets/image-20220423211811981.png)
+  * 생성된 중개 테이블 확인
+
+<br>
+
+* **현재 User - Article 간 사용 가능한 DB API **
+  * article.user
+    * 게시글을 작성한 유저 - 1:N
+  * article.like_users
+    * 게시글을 좋아요한 유저 - M:N
+  * user.article_set
+    * 유저가 작성한 게시글(역참조) - 1:N
+  * user.like_articles
+    * 유저가 좋아요한 게시글(역참조) - M:N
+
+<br>
+
+* **Like 구현**
+  * url 작성
+  * like view 함수 작성
+
+<br>
+
+* **QuerySet API - 'exists()'**
+  * QuerySet에 결과가 포함되어 있으면 True를 변환하고 그렇지 않으면 False를 반환
+  * 특히 규모가 큰 QuerySet의 컨텍스트에서 특정 개체 존재 여부와 관련된 검색에 유용
+  * 고유한 필드(예: primary key)가 있는 모델이 QuerySet의 구성원 인지 여부를 찾는 가장 효율적인 방법
+
+<br>
+
+* **Like 구현**
+  * index 페이지에 like 출력 부분 작성
+  * 좋아요 버튼 클릭 후 테이블 확인
+
+<br>
 
 ---
 
@@ -242,7 +283,21 @@
 
 ### 2. Profile Page
 
-<br><br><br><br><br>
+<br>
+
+* **Profile Page 작성**
+  * 자연스러운 follow 흐름을 위한 회원 프로필 페이지 작성하기
+  * url 작성
+    * `<str>`이 맨 위에 있으면 아래 주소들은 `<int>`가 나올 때까지 다 먹힘
+    * 문자열로 되어있으면 맨 아래로 놔줘야함
+  * profile view 함수 작성
+    * ✨get_user_model() : 현재 프로젝트에서 활정화된 유저 객체를 리턴해주는 함수
+    * username도 유니크한 값 => 중복 아이디 가입 X
+  * profile 페이지 작성
+  * base 페이지에 프로필 링크 작성
+  * index 페이지에 프로필 링크 작성
+
+<br>
 
 ---
 
