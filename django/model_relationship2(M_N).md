@@ -305,5 +305,33 @@
 
 ### 3. 팔로우 기능 (Follow)
 
-<br><br><br><br><br><br><br>
+<br>
 
+* **Follow 구현**
+  * ManyToManyField 작성 후 마이그레이션
+    * symmentrical=False
+      * self를 사용할 때만 사용 / True면 자동으로 추가
+  * 생성된 중개 테이블 확인
+    * ✨자기 자신을 참조하면 from과 to를 붙여서 만들어 줌
+  * url 작성
+  *  follow view 함수 작성
+  * profile 페이지에 팔로우와 언팔로우 버튼 작성
+    1. 팔로잉 수 / 팔로워 수 출력
+    2. 자기 자신을 팔로우 할 수 없음
+  * with 태그로 자주 쓰는 것을 변수로 표기 할 수 있음 => 최적화랑은 관계 없음
+    * as : 이전 표기법
+    * = : 최근 표기법
+  * 팔로우 버튼 클릭 후 테이블 확인
+
+<br>
+
+---
+
+<br>
+
+* **마무리**
+  * view 함수에 배웠던 모든 것이 있음
+    * ![image-20220423213249131](model_relationship2(M_N).assets/image-20220423213249131.png)
+
+* **추가사항**
+  * cdn font awesome / Graveta 등을 이용해 아이콘이나 이미지 등을 넣을 수 있음
