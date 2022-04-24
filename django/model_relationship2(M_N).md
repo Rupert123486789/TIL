@@ -261,6 +261,7 @@
 * **Like 구현**
   * url 작성
   * like view 함수 작성
+    * like는 DB에 영향을 주므로 POST 요청
 
 <br>
 
@@ -268,6 +269,7 @@
   * QuerySet에 결과가 포함되어 있으면 True를 변환하고 그렇지 않으면 False를 반환
   * 특히 규모가 큰 QuerySet의 컨텍스트에서 특정 개체 존재 여부와 관련된 검색에 유용
   * 고유한 필드(예: primary key)가 있는 모델이 QuerySet의 구성원 인지 여부를 찾는 가장 효율적인 방법
+  * ✨전체 데이터를 들고 오는것 보다 그냥 있는지 확인하는게 빠름
 
 <br>
 
@@ -334,4 +336,12 @@
     * ![image-20220423213249131](model_relationship2(M_N).assets/image-20220423213249131.png)
 
 * **추가사항**
-  * cdn font awesome / Graveta 등을 이용해 아이콘이나 이미지 등을 넣을 수 있음
+  * cdn font awesome / Graveta 등을 이용해 아이콘이나 이미지 등을 넣을 수 있음 (btn-link / shadow none)
+  
+  * 계산하는데 오래걸리는 것들은 백에서 계산해서 프론드로 넘기는게 사용자 경험 측면에서 좋음 /안 그러면 화면 버벅임
+  
+  * index에서 is_line 하려면 for 로 넘겨야 됨
+  
+  * Django는 필요할 때만 쿼리를 날림
+  
+    
