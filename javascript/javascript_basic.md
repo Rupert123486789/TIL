@@ -929,6 +929,7 @@
 
 * **(참고) 배열 순회 방법 비교**
   * ![image-20220501115219943](javascript_basic.assets/image-20220501115219943.png)
+    * forEach : return이 없으므로 break, continue가 필요 없음
 
 <br>
 
@@ -936,9 +937,14 @@
 
 <br>
 
-### 14. 
+### 14. 객체(Objects)
 
-<br><br><br><br><br><br><br>
+<br>
+
+* **객체의 정의와 특징**
+  * 객체는 속
+
+<br><br><br><br><br><br>
 
 ---
 
