@@ -2,9 +2,7 @@
 
 <br>
 
-## Java Script Basic
-
-<br>
+## AJAX & Asynchronous JavaScript
 
 ### 1. Intro
 
