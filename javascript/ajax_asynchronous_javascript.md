@@ -140,6 +140,7 @@
   * 그렇다면 JS는 왜 기다려주지 않는 방식으로 동작하는가?
     * "JavaScript는 single threaded"
   * ![image-20220507224534133](ajax_asynchronous_javascript.assets/image-20220507224534133.png)
+  * ✨모든 요청에 비동기 처리를 하는것이 아니고, XMLHttpRequest 같은 일부 동작에서만 비동기 처리
 
 <br>
 
@@ -190,7 +191,7 @@
     * 요청이 들어올 때마다 해당 요청을 순차적으로 처리하는 Stack(LIFO) 형태의 자료 구조
   * Wep API(Browser API)
     * JavaScript 엔진이 아닌 브라우저 영역에서 제공하는 API
-    * **💥setTimeout(), DOM events 그리고 AJAX로 데이터를 가져오는 시간이 소요되는 일들을 처리**
+    * **💥setTimeout(), DOM events 그리고 AJAX로 데이터를 가져오는 시간이 소요되는 일(XMLHttpRequest 요청)들을 처리**
   * Task Queue(Event Queue, Message Queue)
     * 비동기 처리된 callback 함수가 대기하는 Queue(FIFO)형태의 자료 구조
     * main thread가 끝난 후 실행되어 후속 JavaScript 코드가 차단되는 것을 방지
@@ -322,6 +323,7 @@
   * **✨.catch(callback)**
     * .then이 하나라도 실패하면(거부되면) 동작(동기식의 'try - except'구문과 유사)
     * 이전 작업의 실패로 인해 생성된 error 객체는 catch 블록 안에서 사용할 수 있음
+    * ✨return 값을 기준으로 성공/실패 판단
   * 각각의 .then() 블록은 서로 다른 promise를 반환
     * 즉, .then()을 여러 개 사용(chaining)하여 연쇄적인 작업을 수행할 수 있음
     * 결국 여러 비동기 작업을 차례대로 수행할 수 있다는 뜻
@@ -362,4 +364,64 @@
 
 ### 5. Axios
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
+
+* **Axios**
+  * "Promise based HTTP client for the browser"
+  * 브라우저를 위한 Promise 기반의 클라이언트
+  * 원래는 "XHR"이라는 브라우저 내장 객체를 활용해 AJAX 요청을 처리하는데, 이보다 편리한 AJAX 요청이 가능하도록 도움을 줌
+    * 확장 가능한 인터페이스와 함께 패키지로 사용이 간편한 라이브러리를 제공
+  * ![image-20220507234741949](ajax_asynchronous_javascript.assets/image-20220507234741949.png)
+
+<br>
+
+* **XMLHttpRequest -> Axios 변경**
+  * ![image-20220507234807621](ajax_asynchronous_javascript.assets/image-20220507234807621.png)
+    * ✨single thread -> Event Loop(Browser) -> Async -> callback -> promise -> Axios
+
+<br>
+
+* **Axios 예시**
+  * ![image-20220507234951421](ajax_asynchronous_javascript.assets/image-20220507234951421.png)
+    * ✨파싱도 알아서 해줌
+
+<br>
+
+---
+
+<br>
+
+### [부록] async & await
+
+<br>
+
+* **async & await(✨promise와 같은 동작을 함 / 겉모습만 다름)**
+  * 비동기 코드를 작성하는 새로운 방법
+    * ECMAScript 2017(ES8)에서 등장
+  * 기존 Promise 시스템 위에 구축된 syntactic sugar
+    * Promise 구조의 then chaining을 제거
+    * 비동기 코드를 조금 더 동기 코드처럼 표현
+    * Syntactic sugar
+      * 더 쉽고 읽고 표현할 수 있도록 설계된 프로그래밍 언어 내의 구문
+      * 즉, 문법적 기능은 그대로 유지하되 사용자가 직관적으로 코드를 읽을 수 있게 만듦
+
+<br>
+
+* **Promise -> async & await 적용**
+  * ![image-20220507235327475](ajax_asynchronous_javascript.assets/image-20220507235327475.png)
+    * 비동기적인 요소가 있다면 await 앞에 붙음 -> 동기적으로 작성 -> async를 적어서 선언
+
+<br>
+
+---
+
+<br>
+
+### 마무리
+
+<br>
+
+* **왜 비동기(Asynchronous) 방식이 필요할까**
+  * "human-centered design with UX"
+    * "인간 중심으로 설계된 사용자 경험"
+    * 실제 Ajax라는 용어를 처음 논문에서 사용한 Jesse James Garrett이 Ajax를 소개하며 강조한 한 마디
