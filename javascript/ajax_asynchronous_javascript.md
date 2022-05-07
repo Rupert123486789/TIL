@@ -4,14 +4,7 @@
 
 ## AJAX & Asynchronous JavaScript
 
-### 1. Intro
-
-<br>
-
-* **동작 방식**
-  * ![image-20220430213908417](javascript_basic.assets/image-20220430213908417.png)
-
-<br>
+### 1. ggggg
 
 * **브라우저(browser)**
   * URL로 웹(WWW)을 탐색하며 서버와 통신하고, HTML 문서나 파일을 출력하는 GUI 기반의 소프트웨어
