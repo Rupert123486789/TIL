@@ -190,7 +190,7 @@
     * 요청이 들어올 때마다 해당 요청을 순차적으로 처리하는 Stack(LIFO) 형태의 자료 구조
   * Wep API(Browser API)
     * JavaScript 엔진이 아닌 브라우저 영역에서 제공하는 API
-    * **✨setTimeout(), DOM events 그리고 AJAX로 데이터를 가져오는 시간이 소요되는 일들을 처리**
+    * **💥setTimeout(), DOM events 그리고 AJAX로 데이터를 가져오는 시간이 소요되는 일들을 처리**
   * Task Queue(Event Queue, Message Queue)
     * 비동기 처리된 callback 함수가 대기하는 Queue(FIFO)형태의 자료 구조
     * main thread가 끝난 후 실행되어 후속 JavaScript 코드가 차단되는 것을 방지
@@ -211,7 +211,7 @@
   * 실제로 0ms 후에 callback 함수가 시작된다는 의미가 아님
   * 실행은 Task Queue에 대기 중인 작업 수에 따라 다르며 해당 예시에서는 callback 함수의 메시지가 처리되기 전에 'Hi'와 'Bye'가 먼저 출력됨
   * 왜냐하면 delay(지연)는 JavaScript가 요청을 처리하는데 필요한 최소 시간이기 때문(보장된 시간이 아님)
-  * 기본적으로 setTimeout 함수에 특정 시간제한을 설정했더라도 대기 중인 메시지의 모든 코드가 완료될 때까지 대기해야 함
+  * 기본적으로 setTimeout 함수에 특정 시간제한을 설정했더라도 대기 중인 메시지의 모든 코드가 완료될 때까지 대기해야 함(✨무조건 callstack이 비었을 때 들어감)
 
 <br>
 
@@ -233,4 +233,87 @@
 
 ### 3. Callback Function
 
-<br><br><br><br><br>
+<br>
+
+* **Callback Function**
+  * 다른 함수에 인자로 전달된 함수
+  * 외부 함수 내에서 호출되어 일종의 루틴 또는 작업을 완료함
+  * 동기식, 비동기식 모두 사용됨
+    * 그러나 비동기 작업이 완료된 후 코드 실행을 계속하는데 주로 사용됨
+  * 비동기 작업이 완료된 후 코드 실행을 계속하는데 사용되는 경우를 비동기 콜백(asynchronous callback)이라고 함
+
+<br>
+
+* **JavaScript의 함수는 "일급 객체(First Class)다."**
+  * 일급 객체(일급 함수)
+    * 다른 객체들에 적용할 수 잇는 연산을 모두 지원하는 객체(함수)
+  * 일급 객체의 조건
+    * 인자로 넘길 수 있어야 함
+    * 함수의 반환 값으로 사용할 수 있어야 함
+    * 변수에 할당할 수 있어야 함
+
+<br>
+
+* **Callback function 사용 예시(JavaScript, Python, Django)**
+  * ![image-20220507232850382](ajax_asynchronous_javascript.assets/image-20220507232850382.png)
+
+<br>
+
+* **Async callbacks**
+  * 백그라운드에서 코드 실행을 시작할 함수를 호출할 때 인자로 지정된 함수
+  * 백그라운드 코드 실행이 끝나면 callback 함수를 호출하여 작업이 완료되었음을 알리거나, 다음 작업을 실행하게 할 수 있음
+    * 사용 예시) addEventListener()의 두번째 매개변수
+  * callback 함수를 다른 함수의 인수로 전달할 때, 함수의 참조를 인수로 전달할 뿐이지 즉시 실행되지 않고, 함수의 body에서 "called back"됨. 정의된 함수는 때가 되면 callback 함수를 실행하는 역할을 함
+
+<br>
+
+* **Why use callback?**
+  * callback 함수는 명시적인 호출이 아닌 특정 루틴 혹은 action에 의해 호출되는 함수
+  * Django의 경우 "요청이 들어오면", event의 경우 "특정 이벤트가 발생하면"이라는 조건으로 함수를 호출할 수 있었던 건 'Callback function' 개념 때문에 가능
+  * 비동기 로직을 수행할 때 callback 함수는 필수
+    * 명시적인 호출이 아니라 다른 함수의 매개변수로 전달하여 해당 함수 내에서 특정 시점에 호출
+
+<br>
+
+* **callback Hell**
+  * 순차적인 연쇄 비동기 작업을 처리하기 위해 "callback 함수를 호출하고, 그 다음 callback 함수를 호출하고, 또 그 함수의 callback 함수를 호출하고..."의 패턴이 지속적으로 반복됨
+  * 즉, 여러 개의 연쇄 비동기 작업을 할 때 마주하는 상황
+  * 이를 callback Hell(콜백 지옥) 혹은 pyramid of doom(파멸의 피라미드)이라 함
+  * 위와 같은 상황이 벌어질 경우 아래 사항들을 통제하기 어려움
+    * 디버깅
+    * 코드 가독성
+  * ![image-20220507233358553](ajax_asynchronous_javascript.assets/image-20220507233358553.png)
+
+<br>
+
+* **callback Hell 해결하기**
+  1. Keep your code shallow(코드의 깊이를 얕게 유지)
+  2. Modularize(모듈화)
+  3. Handle every single error(모든 단일 오류 처리)
+  4. **💥Promise callbacks(Promise 콜백 방식 사용)**
+
+<br>
+
+---
+
+<br>
+
+### 4. Promise
+
+<br>
+
+* **Promise object**
+  * 비동기 작업의 최종 완료 또는 실패를 나타내는 객체
+    * 미래의 완료 또는 실패와 그 결과 값을 나타냄
+    * 미래의 어떤 상황에 대한 약속
+  * 성공(이행)에 대한 약송
+    * .then()
+  * 실패(거절)에 대한 약속
+    * .catch()
+  * ![image-20220507233613884](ajax_asynchronous_javascript.assets/image-20220507233613884.png)
+
+<br>
+
+* ****
+
+<br><br><br><br>
