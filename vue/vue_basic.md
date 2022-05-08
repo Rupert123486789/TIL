@@ -192,21 +192,65 @@
 
 ### 3. Concepts of Vue.js
 
+<br>
+
+* **MVVM Pattern**
+  * 애플리케이션 로직을 UI로부터 분리하기 위해 설계된 디자인 패턴
+  * 구성 요소
+    1. Model
+    2. View
+    3. View Model
+
+<br>
+
+* **MVVM Pattern in Vue.js**
+  * ![image-20220508154219405](vue_basic.assets/image-20220508154219405.png)
+    * View - HTML
+    * Model - object -> data
+
+<br>
+
+* **MVVM**
+  * Model
+    * "Vue에서  Model은 JavaScript Object다."
+    * Object === { key:value }
+    * Model은 Vue Instance 내부에서 data라는 이름으로 존재
+    * 이 data가 바뀌면 View(DOM)가 반응
+  * View
+    * "Vue에서 View는 DOM(HTML)이다."
+    * Data의 변화에 따라서 바뀌는 대상
+  * ViewModel
+    * "Vue에서 ViewModel은 모든 Vue Instance이다."
+    * View와 Model 사이에서 Data와 DOM에 관련된 모든 일을 처리
+    * ViewModel을 활용해 Data를 얼마만큼 잘 처리해서 보여줄 것인지(DOM)를 고민하는 것
+
+<br>
+
+---
+
+<br>
+
+### 4. Vue version 2 vs 3
+
+<br>
+
+* 
+
+<br><br><br>
+
+---
+
+<br>
+
+### 5. Quick Start
+
 <br><br><br><br><br><br>
 
 ---
 
 <br>
 
-### 4. Quick Start
-
-<br><br><br><br><br><br>
-
----
-
-<br>
-
-### 5. Basic Syntax
+### 6. Basic Syntax
 
 <br><br>
 
