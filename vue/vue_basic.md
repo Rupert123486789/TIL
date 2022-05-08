@@ -234,15 +234,23 @@
 
 <br>
 
-* 
+* **Official main version === Vue 3**
+  * Vue 3
+    * 2022년 2월부터 vue 프레임워크의 기본 버전이 3.x로 전환
+    * CDN or npm을 통한 설치시 자동으로 Vue 3로 설정
+  * Vue 2
+    * 실무에서 여전히 Vue 2가 많이 사용됨(legacy code)
+    * Vue 2의 생태계(문서, 튜토리얼, 자료, QnA 등)가 더 성숙함
+    * 코어/커뮤니티 라이브러리의 호환 역시 Vue 2가 더 안정적
+    * 참고자료가 많은 Vue 2로 학습 후, Vue 3로 이전(migration)하는게 가장 효과적
 
-<br><br><br>
+<br>
 
 ---
 
 <br>
 
-### 5. Quick Start
+### 5. Quick Start of Vue.js
 
 <br><br><br><br><br><br>
 
