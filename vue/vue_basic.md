@@ -397,7 +397,7 @@
 
 <br>
 
-* **v-if, v-else-if, v-else**
+* **v-if, v-else-if, v-else**(✨각각의 태그 사이에 전혀 다른 태그를 끼워넣으면 아래부분이 동작을 안함)
   * 조건부 렌더링 중 하나
   * 조건에 따라 요소를 렌더링
   * directive의 표현식이 true일 때만 렌더링
@@ -456,7 +456,7 @@
 
 <br>
 
-* **v-model**
+* **v-model(✨사용자에게 입력받는 태그에만 사용가능 / v-bind와 혼동 주의!)**
   * HTML form 요소의 값과 data를 양방향 바인딩
   * 수식어
     * .lazy
@@ -480,7 +480,7 @@
 
 <br>
 
-* **computed & methods**
+* **computed(✨계산된 값) & methods(✨행동)**
   * computed 속성 대신 methods에 함수를 정의할 수도 있음
     * 최종 결과에 대해 두 가지 접근 방식은 서로 동일
   * 차이점은 computed 속성은 종속 대상을 따라 저장(캐싱) 됨
@@ -535,4 +535,24 @@
 
 ### 8. Lifecycle Hooks
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
+
+* **Lifecycle Hooks**
+  * 각 Vue 인스턴스는 생성될 때 일련의 초기화 단계를 거침
+    * 예를 들어 데이터 관찰 설정이 필요한 경우, 인스턴스를 DOM에 마운트하는 경우, 데이터가 변경되어 DOM를 업데이트하는 경우 등
+  * 그 과정에서 사용자 정의 로직을 실행할 수 있는 Lifecycle Hooks도 호출됨
+  * 공식문서를 통해 각 라이프 사이클 훅의 상세 동작을 참고
+  * 대부분 Created만 씀
+    * ex. 외부API에서 초기 데이터 받기 자동화
+
+<br>
+
+* **Lifecycle Hooks 예시**
+  * 예를 들어 created hook은 vue 인스턴스가 생성된 후에 호출 됨
+    * ![image-20220508163706514](vue_basic.assets/image-20220508163706514.png)
+  * created를 사용해 애플리케이션의 초기 데이터를 API 요청을 통해 불러올 수 있음
+    * ![image-20220508163730593](vue_basic.assets/image-20220508163730593.png)
+  * ![image-20220508163743391](vue_basic.assets/image-20220508163743391.png)
+    * 초기값 -> created
+    * 초기값으로 DOM 조각 -> mounted
+
