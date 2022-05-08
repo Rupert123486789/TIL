@@ -252,13 +252,37 @@
 
 ### 5. Quick Start of Vue.js
 
-<br><br><br><br><br><br>
+<br>
+
+* **Django & Vue.js 코드 작성 순서**
+  * Django
+    * "데이터의 흐름"
+    * url -> views -> template
+  * Vue.js
+    * **💥"Data가 변화하면 DOM이 변경"**
+      1. Data 로직 작성
+      2. DOM 작성
+
+<br>
+
+* **공식문서 "시작하기" 따라하기**
+  * CDN 작성
+  * 선언적 렌더링
+    * ✨명령어 메시지에서 선언형 메시지로 바뀜
+  * Element 속성 바인딩
+  * 조건문
+  * 반복문
+  * 사용자 입력 핸들링
+    * ✨알아서 동기화가 됨
+    * 💥this가 내부적으로 가리키는게 달라짐(해체 작업이 일어남) / 콜백 아님 / methods에서 화살표 함수 사용하면 안됨!
+
+<br>
 
 ---
 
 <br>
 
-### 6. Basic Syntax
+### 6. Basic Syntax of Vue.js
 
 <br><br>
 
