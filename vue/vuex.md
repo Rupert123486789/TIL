@@ -231,6 +231,87 @@
 
 * **State 작성**
   * state에 2개의 todo 작성
+  * [주의]
+    * Vuex를 사용한다고 해서 Vuex Store에 모든 상태를 넣어야 하는 것은 아님
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
+
+* **TodoList 데이터 가져오기**
+  * 컴포넌트에서 Vuex Stroe의 state에 접근
+    * $store.state
+
+<br>
+
+* **Computed로 변경**
+  * 현재 state의 todo는 값이 변화하는 것이 아님
+  * store에 저장된 todo 목록을 가져오는 것이기 때문에 매번 새로 호출하는 것은 비효율적
+  * 대신 todo가 추가 되는 등의 변경 사항이 있을 때만 새로 계산한 값을 반환하는 방향으로 변경(computed)
+  * this(Vue Instance)로 접근
+
+<br>
+
+* **Pass Props(TodoList -> Todo)**
+
+<br>
+
+* **Actions & Mutations**(💥action에서도 state 변경이 가능하지만 데이터의 흐름을 파악하기 위해 mutations 분리)
+  * createTodo 메서드를 통해 createTodo Action 함수 호출(dispatch())
+  * Actions
+    * createTodo 함수
+    * CREATE_TODO mutation 함수 호출
+  * Mutations
+    * CREATE_TODO 함수
+    * State의 todo 데이터 조작
+
+<br>
+
+* **Actions의 "context" 객체**
+  * Vuex store의 전반적인 맥락 속성을 모두 포함하고 있음
+  * 그래서 context.commit을 호출하여 mutation을 호출하거나, context.state와 context.getters를 통해 state와 getters에 접근 할 수 있음
+    * dispatch()로 다른 actions도 호출 가능
+  * 💥**"할 수 있지만 actions에서 state를 조작하지 말 것"**
+
+<br>
+
+* **Vuex 상태 관리 흐름**
+  * ![image-20220511211722201](vuex.assets/image-20220511211722201.png)
+
+<br>
+
+* **Mutations handler name**
+  * Mutations 함수(핸들러 함수)의; 이름은 상수로 작성하는 것을 권장
+    * linter와 같은 tool에서 디버깅하기에 유용하며, 전체 애플리케이션에서 어떤 것이 mutation인지 한눈에 파악할 수 있음
+
+<br>
+
+* **Javascript Destructuring assignment**
+  * 배열의 값이나 객체의 속성을 고유한 변수로 압축 해제(unpack)할 수 있는 JavaScript 표현식
+  * actions 변경
+
+<br>
+
+---
+
+<br>
+
+### 3-3. Delete Todo
+
+<br>
+
+* **TodoListItem 컴포넌트**
+  * deleteTodo action 함수 호출
+
+<br>
+
+* **Actions & Mutations**
+
+<br>
+
+---
+
+<br>
+
+### 3-4. Update Todo
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
