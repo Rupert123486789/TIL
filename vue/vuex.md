@@ -442,7 +442,41 @@
 
 <br>
 
+---
 
+<br>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+### 마무리
 
+<br>
+
+* **Vuex**
+  * 상태 관리 라이브러리
+  * 중앙 집중식 저장소
+
+<br>
+
+* **✨Vuex Core Concepts**
+  * State
+  * Mutations
+  * Actions
+  * Getters
+
+<br>
+
+* **그냥 mutations으로만 state를 변경하면 안될까?**
+  * "가능하다"
+    * 단, 저장소의 각 컨셉(state, getters, mutations, actions)은 각자의 역할이 존재하도록 설계 되어 있음
+  * 물론 우리가 작성한 todo app처럼 actions의 로직이 특별한 작업 없이 단순히 mutations만을 호출하는 경우도 있으나
+    * 이 경우는 Vuex 도입의 적절성을 판단해 볼 필요가 있음
+
+<br>
+
+* **Vuex, 그럼 언제 사용해야 할까?**
+  * Vuex는 공유된 상태 관리를 처리하는데 유용하지만, 개념에 대한 이해와 시작하는 비용이 큼
+  * 앱이 단순하다면 Vuex가 없는 것이 더 적절할 수 있음
+  * 그러나, 중대형 규모의 SPA를 구축하는 경우 Vuex는 자연스럽게 선택할 수 있는 단계가 오게 됨
+  * 결과적으로 역할에 적절한 상황에서 활용 했을 때 Vuex 라이브러리 효용을 극대화 할 수 있음
+  * 즉, 필요한 순간이 왔을 때 사용하는 것을 권장
+  * "Flux 라이브러리는 안경과 같습니다. 필요할 때 알아 볼 수 있습니다."
+    * Dan Abramov(author of Redux)
