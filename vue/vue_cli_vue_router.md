@@ -483,4 +483,61 @@
        * 라우팅에 대한 결정권을 클라이언트가 가짐
      * 결국 Vue Router는 라우팅의 결정권을 가진 Vue.js에서 라우팅을 편리하게 할 수 있는 Tool을 제공해주는 라이브러리
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>**
+<br>
+
+---
+
+<br>
+
+### 6. Youtube Project
+
+<br>
+
+* **Youtube Project 컴포넌트 관계**
+  * ![image-20220514115159031](vue_cli_vue_router.assets/image-20220514115159031.png)
+
+<br>
+
+* **1. 프로젝트 준비**
+  * 프로젝트 생성 및 lodash 설치
+
+<br>
+
+* **2. 유튜브 검색 데이터(TheSearchBar.vue)**
+  * 컴포넌트 등록
+  * Emit Event(ThesearchBar.vue -> App.vue)
+  * 이벤트 청취 후 함께 전달 된 데이터 할당
+
+<br>
+
+* **3. 유튜브 요청 & 응답 데이터 처리(App.vue)**
+  * API_KEY, API_URL 할당
+  * Youtube API 요청 & 응답 데이터를 변수에 할당
+  * Pass props(App.vue -> VideoList.vue)
+  * 할당한 응답 데이터를 하위 컴포넌트로 전달
+  * 내려 받은 prop 데이터 선언 후 사용
+  * Pass props(VideoList.vue -> VideoListItem.vue)
+  * 내려받은 prop 데이터(개별 비디오 객체) 선언 후 사용
+
+<br>
+
+* **4. 유튜브 영상 상세 정보 - VideoDetial.vue**
+  * 유튜브 상세 영상 정보 알리기
+    * VideoListItem.vue -> VideoList.vue
+    * VideoList.vue -> App.vue
+    * App 컴포넌트에서 내린 데이터가 VideoDetail에 전달 되었는지 확인
+    * App.vue -> VideoDetail.vue
+    * VideoDetial 컴포넌트 마무리
+    * Youtube iframe 문서를 참고하여 vidoeId 값 찾기
+
+<br>
+
+* **5. Environment Variable**
+  * API 키 환경변수 설정
+  * 프로젝트 최상단에 배치하여 환경 변수를 지정 할 수 있음
+  * 'NODE_ENV', 'BASE_URL' 및 'VUE_APP_'로 시작하는 변수만 클라이언트 번들에 정적으로 포함됨
+  * .env.local에 작성하는 환경 변수는 개발 단계에서 원격 저장조세 노출시키지 않기 위해 git에서 무시되며, 모든 경우에 로드하기 위해 사용
+  * 단, 환경 변수는 빌으에 포함되므로 누구나 앱 파일을 검사하여 볼 수 있으며, 실제 배포 단계에서는 배포 서비스에서 이러한 환경 변수를 설정할 수 있도록 환경을 제공함
+  * [참고] 환경 변수
+    * 컴퓨터에서 동작하는 방식에 영향을 미치는, 동적인 값들의 모임
+    * 시스템의 실행 파일이 놓여 있는 디렉터리의 경로 등 운영체제 상에서 동작하는 응용 프로그램이 참조하기 위한 설정이 기록됨
