@@ -67,6 +67,53 @@
 
 ### 2. Vue CLI
 
-<br><br><br><br><br><br><br><br>
+<br>
+
+* **Vue CLI**
+  * Vue.js 개발을 위한 표준 도구
+  * 프로젝트의 구성을 도와주는 역할을 하며 Vue 개발 생태계에서 표준 tool 기준을 목표로 함
+  * 확장 플러그인, GUI, Babel 등 다양한 tool 제공
+
+<br>
+
+* **Node.js**
+  * 자바스크립트를 브라우저가 아닌 환경에서도 구동할 수 있도록 하는 자바스크립트 런타임 환경
+    * ✨브라우저 밖을 벗어 날 수 없던 자바스크립트 언어의 태생적 한계를 해결
+    * 브라우저 밖에서 범용적으로 사용하기 위한 Flatform 제공
+  * Chrome V8 엔진을 제공하여 여러 OS 환경에서 실행할 수 있는 환경을 제공
+  * 즉, 단순히 브라우저만 조작할 수 있던 자바스크립트를 SSR 아키텍처에서도 사용할 수 있도록 함
+  * [참고] 20009년 Ryan Dahl에 의해 발표
+
+<br>
+
+* **NPM(Node Package Manager)**
+  * 자바스크립트 언어를 위한 패키지 관리자
+    * Python에 pip가 있다면 Node.js에는 NPM
+    * pip와 마찬가지로 다양한 의존성 패키지를 관리
+  * Node.js의 기본 패키지 관리자
+  * Node.js 설치 시 함께 설치됨
+
+<br>
+
+* **Vue CLI Quick Start**(✨git-bash가 아닌 vscode terminal로 진행)
+  * 설치(-g는 global을 의미함 / 안 쓰면 특정 구역에 귀속됨)
+  * 버전 확인
+  * 프로젝트 생성
+  * npm 레지스트리 변경(환경에 따라 나오지 않을 수 있음)
+  * Vue 버전 선택(Vue2)
+  * 프로젝트 생성 성공
+  * 프로젝트 디렉토리 이동
+  * 서버 실행
+  * 프로젝트 메인 페이지
+
+<br>
+
+---
+
+<br>
+
+### 3. Babel & Webpack
+
+<br><br>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>**
