@@ -144,6 +144,7 @@
    * getters 자체가 state를 변경하지는 않음
      * state를 특정한 조건에 따라 구분(계산)만 함
      * 즉, 계산된 값을 가져옴
+   * ✨getters에 정의하는 method들은 계산된 값을 저장하므로 반드시 return이 필요함
 
 <br>
 
