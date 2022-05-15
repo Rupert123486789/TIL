@@ -11,7 +11,7 @@
 <br>
 
 * **Vuex**
-  * "Statement management pattern + Library" for vue.j
+  * "Statement management pattern + Library" for vue.js
     * 상태 관리 패턴 + 라이브러리
   * 상태(state)를 전역 저장소로 관리할 수 있도록 지원하는 라이브러리
     * 상태가 예측 가능한 방식으로만 변경될 수 있도록 보장하는 규칙 설정
