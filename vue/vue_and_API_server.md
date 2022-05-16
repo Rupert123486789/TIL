@@ -302,4 +302,8 @@
 
 ### 마무리
 
-<br><br><br><br><br>
+<br>
+
+* **Server & Client**
+* **CORS**
+* **Authentication & Authorization**
