@@ -232,6 +232,74 @@
 
 <br>
 
-### 5.
+### 5. DRF Authentication
 
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
+
+* **다양한 인증 방식**
+  1. Session Based
+  2. Token Based
+     * **Basic Token**
+     * JWT
+  3. Oauth
+     * google
+     * facebook
+     * github
+     * ...
+
+<br>
+
+* **Basic Token Authentication**
+  * ![image-20220516210344719](vue_and_API_server.assets/image-20220516210344719.png)
+  * ![image-20220516210350925](vue_and_API_server.assets/image-20220516210350925.png)
+  * ![image-20220516210357838](vue_and_API_server.assets/image-20220516210357838.png)
+  * ![image-20220516210405562](vue_and_API_server.assets/image-20220516210405562.png)
+  * ![image-20220516210410860](vue_and_API_server.assets/image-20220516210410860.png)
+    * 새로운 테이블 생성
+    * ✨올바른 요청을 보내면 토큰 값이 옴
+  * ![image-20220516210418023](vue_and_API_server.assets/image-20220516210418023.png)
+  * ![image-20220516210425453](vue_and_API_server.assets/image-20220516210425453.png)
+  * ![image-20220516210431648](vue_and_API_server.assets/image-20220516210431648.png)
+  * **![image-20220516210617922](vue_and_API_server.assets/image-20220516210617922.png)**
+
+<br>
+
+* **JWT**(✨토큰이 필요없음 / 이미 필요한 정보를 가지고 있음)
+  * ![image-20220516210717940](vue_and_API_server.assets/image-20220516210717940.png)
+  * "JSON Web Token"
+  * JSON 포맷을 활용하여 요소 간 안전하게 정보를 교환하기 위한 표준 포맷
+  * 암호화 알고리즘에 의한 디지털 서명이 되어 있기 때문에 JWT 자체로 검증 가능
+  * JWT 자체가 필요한 정보를 모두 갖기 때문에(self-contained) 이를 검증 하기 위한 다른 검증 수단(ex. table)이 필요 없음
+  * 사용처
+    * Authentication, Information Exchange
+
+<br>
+
+* **JWT 특징**
+  * 기본 토크 인증 체계와 달리 JWT 인증 확인은 데이터베이스를 사용하여 토큰의 유효성을 검사할 필요가 없음
+    * 장점
+      * 즉, JWT는 데이터베이스에서 유효성 검사가 필요 없음
+      * JWT 자체가 인증에 필요한 정보를 모두 갖기 때문(self-contained)
+      * 이는 세션 혹은 기본 토큰을 기반으로 한 인증과의 핵심 차이점
+    * 단점
+      * 토큰 탈취시 서버 측에서 토큰 무효화가 불가능(블랙리스팅 테이블 활용)
+      * 매우 짧은 유효기간(5min)과 Refresh 토큰을 활용하여 구현
+      * MSA(Micro Server Architecture) 구조에서 서버간 인증에 활용
+    * One Source(JWT) Multi Use 가능
+
+<br>
+
+* **'dj-rest-auth' & 'django-allauth' 라이브러리**
+  * ![image-20220516211212546](vue_and_API_server.assets/image-20220516211212546.png)
+  * ![image-20220516211221185](vue_and_API_server.assets/image-20220516211221185.png)
+  * ![image-20220516211243056](vue_and_API_server.assets/image-20220516211243056.png)
+
+<br>
+
+---
+
+<br>
+
+### 마무리
+
+<br><br><br><br><br>
