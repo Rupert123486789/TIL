@@ -59,6 +59,14 @@
 
 <br>
 
-### 2. 
+### 2. Start Project Model + Serializer
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
+
+---
+
+<br>
+
+### 3. CORS
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
