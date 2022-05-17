@@ -292,7 +292,12 @@
 * **'dj-rest-auth' & 'django-allauth' 라이브러리**
   * ![image-20220516211212546](vue_and_API_server.assets/image-20220516211212546.png)
   * ![image-20220516211221185](vue_and_API_server.assets/image-20220516211221185.png)
+    * IsAuthenticate : login / signup 빼고는 인증된 사용자에게만 허용
   * ![image-20220516211243056](vue_and_API_server.assets/image-20220516211243056.png)
+    * login / logout / password 등등이 알아서 맞춰져 있음
+    * url은 겹쳐도 상관 없음 
+      * 위에서 아래로 접근함(없다면) 
+      * url 통일성을 줄 수 있음
 
 <br>
 
@@ -307,3 +312,6 @@
 * **Server & Client**
 * **CORS**
 * **Authentication & Authorization**
+* ![image-20220516212541126](vue_and_API_server.assets/image-20220516212541126.png)
+
+<br>
