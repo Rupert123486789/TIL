@@ -101,6 +101,24 @@
 
 <br>
 
-### 5. Vu
+### 5. Vuex - Component 구성
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
+
+* **accounts Login**
+* **accounts Logout & Profile**
+* **accounts Signup**
+* **articles Read / Like**
+* **articles C U D**
+* **Comments C R D**
+* **Comments Update**
+
+<br>
+
+---
+
+<br>
+
+### Tip.
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
