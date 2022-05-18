@@ -80,6 +80,27 @@
 
 <br>
 
+* **Module 분리**(✨파일이 너무 많아서 분리)
+  * ![image-20220518202523132](vue_application.assets/image-20220518202523132.png)
+  * 1. 단일 파일(@/ store/index.js)에 모든 state, getters, mutations, actions를 작성할 경우, App이 커질수록 파일의 크기가 너무 커짐
+    2. 기능에 따라 state, getters, mutations, actions를 모듈(파일)로 분리하여 사용
+  * ![image-20220518202710437](vue_application.assets/image-20220518202710437.png)
+  * ![image-20220518202728747](vue_application.assets/image-20220518202728747.png)
 
+<br>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+* **Module의 이름공간(module space)**
+  * ![image-20220518202816619](vue_application.assets/image-20220518202816619.png)
+  * 1. 다른 module에 작성되어 있어도, 실제로는 global namespace에 등록됨
+    2. 만약 확실하게 모듈별로 구분하고 싶다면, namespaced: true 옵션을 사용
+  * ![image-20220518202909639](vue_application.assets/image-20220518202909639.png)
+
+<br>
+
+---
+
+<br>
+
+### 5. Vu
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
