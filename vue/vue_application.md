@@ -121,4 +121,7 @@
 
 ### Tip.
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
+
+* !! : T/F로 바꿀 수 있음
+* ? : 
