@@ -56,4 +56,30 @@
 
 ### 3. Navigation Guard
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
+
+* **전역 가드(Global Before Guards)** - ✨모든 url 이동 전에 검문
+
+  1. URL을 이동할 때마다, 이동하기 전 모든 경우에 발생
+  2. router 객체의 메서드로, 콜백 함수를 인자로 받고 해당 콜백 함수는 3개의 인자를 받음
+     1.  to: 이동하려는 route의 정보를 담은 객체
+     2.  from: 직전 route의 정보를 담은 객체
+     3.  next: 실제 route의 이동을 조작하는 함수
+  3. 반드시 마지막에 next()로 route 이동을 실행해야 함
+
+  * ![image-20220518202405407](vue_application.assets/image-20220518202405407.png)
+  * ![image-20220518202432381](vue_application.assets/image-20220518202432381.png)
+
+<br>
+
+---
+
+<br>
+
+### 4. Vuex Module
+
+<br>
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
