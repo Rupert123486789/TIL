@@ -206,9 +206,11 @@
 
 ---
 
-
+<br>
 
 ### 6. 그리디(Greedy Algorithm)
+
+<br>
 
 * **탐욕(Greedy) 알고리즘**
 
