@@ -219,58 +219,61 @@
   * 인접한 정점들에 대해 탐색을 한 후, 차례로 다시 너비우선탐색을 진행해야 하므로, 선입 선출 형태의 자료구조인 ✨큐를 활용함.
   * 아래와 같은 순서로 탐색함.
     * ![image-20220302001014345](queue.assets/image-20220302001014345.png)
-  
+
 * **BFS 알고리즘**
   * 입력 파라미터 : 그래프 G와 탐색 시작점 v
   * ![image-20220302001157790](queue.assets/image-20220302001157790.png)
-  
+
+
+<br>
+
 * **BFS 예제**
   * ![image-20220307204521213](queue.assets/image-20220307204521213.png)
-  
+
   * ![image-20220307204534152](queue.assets/image-20220307204534152.png)
-  
+
   * ![image-20220307204551184](queue.assets/image-20220307204551184.png)
-  
+
   * ![image-20220307204602743](queue.assets/image-20220307204602743.png)
-  
+
   * ![image-20220307204621838](queue.assets/image-20220307204621838.png)
-  
+
   * ![image-20220307204635159](queue.assets/image-20220307204635159.png)
-  
+
   * ![image-20220307204647350](queue.assets/image-20220307204647350.png)
-  
+
   * ![image-20220307204658154](queue.assets/image-20220307204658154.png)
-  
+
   * ![image-20220307204706862](queue.assets/image-20220307204706862.png)
-  
+
   * ![image-20220307204719592](queue.assets/image-20220307204719592.png)
-  
+
   * ![image-20220307204732506](queue.assets/image-20220307204732506.png)
-  
+
   * ![image-20220307204741780](queue.assets/image-20220307204741780.png)
-  
+
   * 중복이 얼마나 있는지 모르고, 중복이 발생하여 큐의 크기를 벗어날 때는?
-  
+
     * ![image-20220307205135230](queue.assets/image-20220307205135230.png)
-  
+
       
-  
+
     * append, pop(0)는 효율이 안 좋음(중복이 너무 많으면 악순환)
-  
+
     *  BFS는 한 번만
-  
+
     * 줄서는 순서로 들어오게 한다면?
-  
+
     * ![image-20220307205311473](queue.assets/image-20220307205311473.png)
-  
+
     * ![image-20220307205359304](queue.assets/image-20220307205359304.png)
-  
+
     * ![image-20220307205430873](queue.assets/image-20220307205430873.png)
-  
+
     * ![image-20220307205509285](queue.assets/image-20220307205509285.png)
-  
+
     * ![image-20220307205519618](queue.assets/image-20220307205519618.png)
-  
+
 
 <br>
 
