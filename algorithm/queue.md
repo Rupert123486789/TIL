@@ -144,6 +144,9 @@
     * ![image-20220301235819058](queue.assets/image-20220301235819058.png)
     * ![image-20220301235946634](queue.assets/image-20220301235946634.png)
 
+
+<br>
+
 * **원형 큐의 구현 예**
 
   * ![image-20220302000012108](queue.assets/image-20220302000012108.png)
