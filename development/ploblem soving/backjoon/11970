@@ -1,0 +1,15 @@
+# Fence Painting
+
+```python
+res = set()
+a, b = map(int, input().split())
+c, d = map(int, input().split())
+
+for i in range(a, b):
+    res.add(i)
+
+for i in range(c, d):
+    res.add(i)
+
+print(len(res))
+```
